@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Жить сейчас! Потом — это не дата в календаре</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="any">
+<link rel="stylesheet" href="style.min.css">
+
+<meta name="description" content="Система, в которой ты не откатываешься после курсов: личный напарник, живые разборы с основателями и движение вперёд без пауз.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- <script src="https://cdn.tailwindcss.com/3.4.17"></script> -->
+<!--  
+<script>
+tailwind.config={theme:{extend:{
+ colors:{bg:'var(--c-bg)',bg2:'var(--c-bg2)',card:'var(--c-card)',line:'var(--c-line)',ink:'var(--c-text)',muted:'var(--c-muted)',accent:'var(--c-accent)','accent-ink':'var(--c-accent-ink)',violet:'var(--c-violet)',bad:'var(--c-bad)',good:'var(--c-good)'},
+ fontFamily:{head:'var(--ff-head)',body:'var(--ff-body)'},
+ fontSize:{hero:['var(--fs-hero)','1.02'],big:['var(--fs-big)','1.05'],h2:['var(--fs-h2)','1.12'],h3:['var(--fs-h3)','1.3'],body:['var(--fs-body)','1.65'],small:['var(--fs-small)','1.5']},
+ spacing:{sec:'var(--sp-section)',gap:'var(--sp-gap)',card:'var(--sp-card)'},
+ borderRadius:{card:'var(--radius)',btn:'var(--radius-btn)'},
+ maxWidth:{wrap:'var(--container)',read:'var(--read)'}
+}}}
+</script>
+-->
+<style>
+:root{
+ --c-bg:#0b1220; --c-bg2:#0f172a; --c-card:#162033; --c-line:#26334b;
+ --c-text:#f8fafc; --c-muted:#b0bccf;
+ --c-accent:#f59e0b; --c-accent-ink:#1a1204; --c-violet:#818cf8;
+ --c-bad:#f87171; --c-good:#34d399;
+ --c-glow1:rgba(99,102,241,.38); --c-glow2:rgba(245,158,11,.22); --c-glow3:rgba(52,211,153,.12);
+ --c-bar:rgba(11,18,32,.88);
+
+ --ff-head:'Poppins',system-ui,sans-serif; --ff-body:'Lato',system-ui,sans-serif;
+ --fs-hero:clamp(3rem,9vw,6.4rem); --fs-big:clamp(2.4rem,6vw,3.8rem); --fs-h2:clamp(1.8rem,4.2vw,2.9rem);
+ --fs-h3:1.2rem; --fs-num:clamp(1.9rem,3.2vw,2.5rem); --rail-shift:2.75rem; --fs-body:1.0625rem; --fs-small:.9rem;
+
+ --sp-section:clamp(2.75rem,6vw,4.75rem); --sp-gap:1.25rem; --sp-card:1.6rem;
+ --container:72rem; --read:44rem; --radius:1.1rem; --radius-btn:.85rem;
+
+ --fx-blur:90px; --fx-speed:24s;
+}
+html{background:var(--c-bg);scroll-behavior:smooth}
+body{background:transparent;color:var(--c-text);font-family:var(--ff-body);font-size:var(--fs-body)}
+.fx{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--c-bg);pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(var(--fx-blur));animation:drift var(--fx-speed) ease-in-out infinite alternate}
+.o1{width:42rem;height:42rem;background:var(--c-glow1);top:-10rem;right:-12rem}
+.o2{width:36rem;height:36rem;background:var(--c-glow2);bottom:-12rem;left:-10rem;animation-duration:calc(var(--fx-speed)*1.3)}
+.o3{width:28rem;height:28rem;background:var(--c-glow3);top:40%;left:45%;animation-duration:calc(var(--fx-speed)*1.7)}
+@keyframes drift{to{transform:translate(-7vw,9vh) scale(1.18)}}
+@media(prefers-reduced-motion:reduce){.orb{animation:none}html{scroll-behavior:auto}}
+.top{background:var(--c-bar);backdrop-filter:blur(10px)}
+details summary{list-style:none}details summary::-webkit-details-marker{display:none}
+details summary::after{content:'+';float:right;color:var(--c-accent);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:'−'}
+.ul li{position:relative;padding-left:1.4rem}
+.ul li::before{content:'';position:absolute;left:0;top:.62em;width:.55rem;height:.55rem;border-radius:50%;background:var(--c-accent)}
+.ul.no li::before{background:var(--c-bad)}.ul.yes li::before{background:var(--c-good)}
+.rail{position:relative}.rail{padding-left:0}.rail>li{position:relative;margin-left:var(--rail-shift)}.rail>li::before{content:'';position:absolute;left:calc(-1*var(--rail-shift) + .55rem);top:1.7rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--c-accent);box-shadow:0 0 0 4px var(--c-bg)}
+.rail::before{content:'';position:absolute;left:1rem;top:0;bottom:0;width:2px;background:var(--c-line)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--c-accent);outline-offset:3px}
+</style>
+<!--  
+<style type="text/tailwindcss">
+@layer components{
+ .wrap{@apply mx-auto max-w-wrap px-5 md:px-8}
+ .sec{@apply py-sec}
+ .h2{@apply font-head font-bold text-h2 mb-4 max-w-4xl}
+ .lead{@apply text-muted text-body max-w-read mb-10}
+ .card{@apply bg-card border border-line rounded-card p-card}
+ .card h3{@apply font-head font-semibold text-h3 mb-2}
+ .card p{@apply text-muted}
+ .g2{@apply grid gap-gap md:grid-cols-2}
+ .g3{@apply grid gap-gap md:grid-cols-3}
+ .g4{@apply grid gap-gap sm:grid-cols-2 lg:grid-cols-4}
+ .ico{@apply w-12 h-12 grid place-items-center rounded-btn bg-bg2 border border-line text-2xl mb-4}
+ .btn{@apply inline-flex items-center justify-center gap-2 bg-accent text-accent-ink font-head font-semibold px-7 py-4 rounded-btn transition hover:brightness-110}
+ .btn-ghost{@apply inline-flex items-center justify-center gap-2 border border-line text-ink font-head font-semibold px-6 py-4 rounded-btn transition hover:border-accent}
+ .tag{@apply inline-block bg-card border border-line text-accent font-semibold text-small px-4 py-1.5 rounded-full mb-6}
+ .num{@apply font-head font-extrabold text-big text-accent whitespace-nowrap}
+ .num-s{@apply font-head font-extrabold text-accent whitespace-nowrap;font-size:var(--fs-num);line-height:1.1}
+ .acc{@apply text-accent}
+ .tbl{@apply w-full text-left min-w-[34rem]}
+ .tbl th,.tbl td{@apply p-4 border-b border-line align-top}
+ .tbl th{@apply font-head text-small text-muted}
+}
+</style>
+-->
+</head>
+<body>
+<div class="fx" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+<header class="top sticky top-0 z-40 border-b border-line">
+ <div class="wrap flex items-center justify-between py-3">
+  <a href="#top" class="font-head font-extrabold text-h3">Жить сейчас<span class="acc">.</span></a>
+  <nav class="hidden md:flex gap-6 text-small text-muted">
+   <a class="hover:text-ink" href="#why">Почему откат</a><a class="hover:text-ink" href="#how">Как работает</a><a class="hover:text-ink" href="#fit">Для кого</a><a class="hover:text-ink" href="#faq">Вопросы</a>
+  </nav>
+  <a data-bot class="btn !py-2.5 !px-5 text-small" href="#">Написать боту</a>
+ </div>
+</header>
+
+<main id="top">
+<section class="sec !pt-20 md:!pt-28">
+ <div class="wrap">
+  <span class="tag">Система движения вперёд для мужчин</span>
+  <h1 class="font-head font-extrabold text-hero">Жить сейчас.</h1>
+  <p class="font-head font-semibold text-h2 text-violet mt-3 max-w-read">Потом — это не дата в календаре.</p>
+  <p class="text-muted text-body max-w-read mt-8">Пока остальные ждут понедельника, нужного настроения, благоприятных условий и идеального плана, наши ученики уже двигаются к своим целям. Каждую неделю. Без стопов, без «как у всех», без «потом как-нибудь».</p>
+  <div class="flex flex-wrap items-center gap-4 mt-10">
+   <a data-bot class="btn" href="#">Написать боту</a>
+   <a class="btn-ghost" href="#how">Как это устроено</a>
+  </div>
+  <p class="text-small text-muted mt-5 max-w-read">Первый шаг — созвон для интервью: разберём, где ты сейчас, и что с этим делать. Наметим основные шаги и направления для работы.</p>
+ </div>
+</section>
+
+<section class="sec !pt-0">
+ <div class="wrap">
+  <div class="card md:p-10 border-accent">
+   <h2 class="h2">Сразу договоримся: тут жестко и по делу.</h2>
+   <p class="text-muted max-w-read">Без реверансов и обхода острых углов. К счастью, лояльность — не наша сильная сторона. Говорим прямо и с подколом. Не потому что мы грубые, а потому что мужчины лучше усваивают, когда им говорят как есть и с улыбкой. Это не позёрство, а рабочий инструмент: так быстрее доходит и меньше места для самообмана. </p>
+   <p class="mt-4 font-semibold">Ждёшь мотивационных соплей? Тебе не сюда. </p>
+   <p class="mt-4 font-semibold">Хочешь результат? Читай дальше.</p>
+  </div>
+ </div>
+</section>
+
+<section id="why" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Почему большинство курсов не дают эффекта</h2>
+  <p class="lead">Ты же замечал: прошёл тренинг, горишь, летаешь, всё понятно. А через пару недель сидишь в тех же шлёпанцах на том же диване. Это не слабость характера. Это конструкция большинства курсов: они продают заряд, а не результат. Вот самые распространенные причины, почему так выходит.</p>
+  <div class="g3">
+   <div class="card"><div class="ico">🎯</div><h3>Накачка чужими целями</h3><p>Тебя заряжают целями тренера, его идеалами и его «успешным успехом». Чужая цель — как чужая куртка: вроде бренд крутой, но в плечах жмет, ходить невозможно, и через неделю ты забрасываешь ее на антресоль.</p></div>
+   <div class="card"><div class="ico">🔋</div><h3>Ложная мотивация</h3><p>Заряженность «здесь и сейчас» создаётся залом, музыкой и толпой. Выходишь на улицу, и она выветривается к вторнику, как запах свежего кофе в пустой кухне.</p></div>
+   <div class="card"><div class="ico">🗺️</div><h3>Нет плана на «после»</h3><p>Курс закончился, диплом получен, а что делать в понедельник в девять утра, никто не сказал. Знания есть, а дороги от них к твоей жизни нет.</p></div>
+   <div class="card"><div class="ico">🏠</div><h3>Один на один со старым миром</h3><p>Новый ты возвращается в ту же квартиру, к тем же людям и в ту же рутину. Вокруг ничего не изменилось и не собирается: окружение, быт и привычка тянут обратно сильнее любой силы воли.</p></div>
+   <div class="card"><div class="ico">🧠</div><h3>Мозг привык по-старому</h3><p>Нейронные дорожки старых привычек утоптаны годами. Новые ещё тропинка в траве. Мозг тихо, без шума возвращается на привычный маршрут, как кот на своё место на подоконнике.</p></div>
+   <div class="card"><div class="ico">🛋️</div><h3>«Достиг, теперь можно отдохнуть»</h3><p>Твоя победа превращается в разрешение выдохнуть. Выдох длится неделю, потом месяц, потом полгода. Отдых, из которого не возвращаются, называется иначе.</p></div>
+  </div>
+  <p class="font-head font-semibold text-h3 mt-10 max-w-read">Суммируем: причины разные, а следствие одно. Ты становишься другим, но остаёшься с тем же, с чем пришёл, только на пару сотен тысяч беднее.</p>
+ </div>
+</section>
+
+
+<section id="rollback" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Привычный откат: как это выглядит изнутри</h2>
+  <p class="lead">Замечал ли ты, что после любого обучения ты неизбежно возвращаешься к старым привычкам и прежнему поведению спустя время?</p>
+<!--  
+  <div class="g2">
+   <div class="card border-bad"><div class="ico">↩️</div><h3 class="text-bad">Привычный откат</h3>
+    <p>Задор утихает, новое постепенно отступает, и быт снова затягивает в старую рутину, как болото. Постепенно и незаметно.</p>
+    <p class="mt-3">Нет никакого понимания, как жить с новыми знаниями в том мире, который тебя всё ещё окружает. Знания получены, а применять их негде и не с кем. Короткого напутствия "продолжай" недостаточно - ведь нет понимания как продолжать и куда двигаться.</p>
+    <p class="mt-3">Часто цели были не твои, а цели тренинга. Чужие цели без чужой же мотивации не живут.</p></div>
+   <div class="card border-bad"><div class="ico">📉</div><h3 class="text-bad">Падение мотивации</h3>
+    <p>Амбициозные цели не достигнуты, мотивация падает, сроки отодвигаются, режим сыпется.</p>
+    <p class="mt-3">В итоге ты в классической ситуации: вроде что-то делаешь, постоянно занят, а с мёртвой точки ничего не сдвигается. Как бег по эскалатору, идущему вниз. Сил много, результатов нет.</p>
+    <p class="mt-3">И такая удобная, но очень опасная мысль: «ну, теперь-то я знаю. Просто сейчас не надо».</p></div>
+  </div>
+-->
+  <h3 class="font-head font-semibold text-h3 mt-12 mb-5">Откат по шагам. Узнаёшь свою историю?</h3>
+  <ol class="rail space-y-gap">
+   <li class="card"><h3 class="acc">Задор утих</h3><p>Через неделю-две после курса энергия падает до нормального уровня. Это ещё не страшно, это биология.</p></li>
+   <li class="card"><h3 class="acc">Быт затянул</h3><p>Работа, дела, усталость. Новое откладывается «на вечер», а вечером нет сил.</p></li>
+   <li class="card"><h3 class="acc">Цели оказались не твои</h3><p>Выясняется, что ты гнался за картинкой тренера. На твою собственную жизнь она ложится криво. </p></li>
+   <li class="card"><h3 class="acc">Сроки уехали</h3><p>«С понедельника». «С первого числа». «После отпуска». Дедлайн становится резиновым, а режим рассыпается.</p></li>
+   <li class="card border-bad"><h3 class="text-bad">«Теперь-то я знаю, просто сейчас не надо»</h3><p>Финал. Знание есть, действия нет. Без практики знания не усваиваются, запоминается все меньше. Внутри крепнет вывод: «со мной что-то не так».</p><p>С тобой всё так. Не так было с системой, в которой ты остался один.</p></li>
+  </ol>
+  <div class="card mt-gap md:p-10 border-accent">
+   <h3>Хорошая новость</h3>
+   <p class="mt-1 text-ink">Откат — это не приговор, а предсказуемый сбой. А предсказуемые сбои легко лечатся. Дальше расскажем, чем именно.</p>
+  </div>
+ </div>
+</section>
+
+<section id="proof" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Мы не первые это придумали. И в этом плюс</h2>
+  <p class="lead">Вероятность выполнить задуманное резко растёт, когда есть конкретный план, срок и человек, перед которым ты отчитываешься. Разница вот в чём:</p>
+  <div class="g3">
+   <div class="card"><h3 class="text-bad">Желание</h3><p>«Хочу начать заниматься собой».<br>Звучит красиво, но живёт недолго, до пятницы.</p></div>
+   <div class="card"><h3 class="acc">Намерение</h3><p>«Начну на этой неделе».<br>Уже теплее, но «неделя» растяжима как резинка.</p></div>
+   <div class="card border-good"><h3 class="text-good">Обязательство</h3><p>«Во вторник до 18:00 делаю и присылаю подтверждение».<br>Вот это работает.</p></div>
+  </div>
+  <div class="card mt-gap md:p-10 grid md:grid-cols-[auto,1fr] gap-6 items-center">
+   <div class="num">35–85 %</div>
+   <p class="text-muted">По разным источникам и в разных сферах, такая система повышает эффективность на 35–85 %. Это результат самого подхода (напарник, срок, отчёт), а не только нашего проекта. Он давно проверен в спорте, бизнесе. В спорте высших достижений и бизнес-сообществах взаимная отчётность — это стандарт эффективности. Мы собрали и адаптировали эту механику под мужские задачи.</p>
+  </div>
+ </div>
+</section>
+
+<section id="how" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Как работает система Бадди</h2>
+  <p class="lead">Лекарство от отката называется Бадди плюс индивидуальный разбор. Мы строим систему как живой механизм, который поддерживает сам себя: не даёт уйти в самообман и не даёт сбросить темп. Тебе не нужно держать всё на силе воли.</p>
+  <div class="card md:p-10 border-accent mb-gap">
+   <h3>Кто такой Бадди?</h3>
+   <p class="text-ink max-w-read">Это не преподаватель и не абстрактный куратор. Это такой же участник, который идёт к своим целям параллельно с тобой. Человек, заинтересованный в твоём результате даже больше, чем ты сам, потому что его результат зависит от твоей честности так же, как твой от его.</p>
+  </div>
+  <div class="g2">
+   <div class="card"><div class="ico">📞</div><h3>Один созвон в неделю</h3><p>Короткая сверка на 40 минут: разбор задач, корректировка планов, поддержание тонуса. Без лекций и без «давайте поделимся ощущениями».</p></div>
+   <div class="card"><div class="ico">🔍</div><h3>Проверка целей без самообмана</h3><p>Бадди помогает увидеть, где ты искренне идёшь вперёд, а где придумываешь оправдания. Он найдёт, где ты наврал себе и гонишься за чужими целями. «Сделал на отвали» (кое-как через пень-колоду) у него не проходит.</p></div>
+   <div class="card"><div class="ico">📋</div><h3>Пошаговые задачи на неделю</h3><p>Понятные действия и фокусные задачи на ближайшие семь дней. Конкретный результат, который можно показать и пощупать. Большая цель делится на маленькие шаги и достигается последовательно, а не рывками.</p></div>
+   <div class="card"><div class="ico">📸</div><h3>Подтверждение артефактами</h3><p>Фото или видео сделанного: факт, а не рассказ о намерениях. Так ты приучаешь себя доводить дело до конца и фиксировать победы в новой жизни.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7. ТРИ НАВЫКА -->
+<section id="skills" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Три роли Бадди. И три навыка, которые прокачиваешь ты</h2>
+  <p class="lead">Бадди работает в обе стороны: ты проверяешь его, он проверяет тебя. Поэтому ты получаешь не только напарника, но и три навыка, которые полезны во всём остальном.</p>
+  <div class="g3">
+   <div class="card"><div class="ico">🕵️</div><h3>Детектор лжи</h3><p>Свежий взгляд со стороны мгновенно вскрывает уловки разума и попытки оправдать лень. Свою отмазку ты не заметишь, чужую увидишь с первого слова.</p><p class="mt-3 text-ink"><b>Твой навык:</b> постоянно вникая в слова Бадди и проверяя их, ты разучиваешься врать самому себе.</p></div>
+   <div class="card"><div class="ico">⚖️</div><h3>Контролёр ответственности</h3><p>Перед Бадди элементарно стыдно пролениться или сослаться на «плохое настроение». Чёткая дата созвона даёт понятные дедлайны, которые не сдвинешь по настроению.</p><p class="mt-3 text-ink"><b>Твой навык:</b> принимая выполнение у Бадди, ты каждый раз проверяешь, как работает ответственность, и заодно меняешь свою жизнь.</p></div>
+   <div class="card"><div class="ico">🤝</div><h3>Бадди по жизни</h3><p>Свидетель твоих побед и надёжная опора. С ним можно обсудить трудности и честно разделить успех, без показухи и без «а у соседа круче».</p><p class="mt-3 text-ink"><b>Твой навык:</b> радуясь достижениям Бадди, ты учишься радоваться за других. Самооценка начинается именно с этого.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7б. УНИКАЛЬНОСТЬ -->
+<section id="unique" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Чем это отличается от всего, что ты видел</h2>
+  <p class="lead">Система Бадди не наше изобретение, и мы этого не скрываем. Мы взяли то, что давно работает, и собрали под мужские задачи.</p>
+  <div class="g3">
+   <div class="card"><div class="ico">🏆</div><h3>Не мы изобрели</h3><p>Этот подход давно доказал эффективность в бизнесе и спорте. В сообществе анонимных алкоголиков большая часть успеха держится именно на системе напарников. Если она выручает там, она выдержит и твои задачи.</p></div>
+   <div class="card"><div class="ico">🧩</div><h3>Уникальный контекст</h3><p>Насколько мы знаем, до нас никто не внедрял Бадди в глубокую работу с ценностями, личными целями, мужским состоянием и отношениями. Попытки групповой ответственности были, но всегда с наказанием, а не с положительным подкреплением. У нас наоборот.</p></div>
+   <div class="card"><div class="ico">📡</div><h3>Синергия с эфирами</h3><p>Пара Бадди может чего-то не знать или после нескольких попыток не понимать, как дойти до результата. Для этого есть живые эфиры с авторами проекта. Это не «потом посмотришь запись», а разбор твоей ситуации. А при расширении проекта мы планируем ещё много интересного.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8. ТРИ СТОЛПА -->
+<section id="pillars" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Три столпа проекта</h2>
+  <p class="lead">Прямой доступ к экспертам. Живые разборы без посредников, формализма и имитации внимания. Всё держится на трёх вещах.</p>
+  <div class="g3">
+   <div class="card"><div class="ico">👑</div><h3>Работа с авторами</h3><p>Никаких «младших кураторов». Все эфиры и разборы ведут исключительно авторы проекта. Ты разговариваешь с теми, кто эту систему придумал и сам по ней живёт.</p></div>
+   <div class="card"><div class="ico">🤝</div><h3>Система «Бадди»</h3><p>Каждому участнику при входе выделяется личный напарник для взаимного контроля и поддержки. Не «когда-нибудь потом», а сразу.</p></div>
+   <div class="card"><div class="ico">🔥</div><h3>Живые Hot-Seat</h3><p>Разбор твоей проблемы в прямом эфире, на аудиторию, до полного понимания шагов. Не «спасибо за вопрос», а «вот что делаешь завтра в девять».</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8б. БАДДИ: ОКРУЖЕНИЕ -->
+<section id="env" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Бадди и окружение: ты больше не один</h2>
+  <p class="lead">Главная проблема после курсов в том, что ты остаёшься один на один со старым миром. Мы строим тебе новое окружение с первого дня.</p>
+  <div class="g3">
+   <div class="card"><div class="ico">⚡</div><h3>Бадди сразу на старте</h3><p>При вступлении ты сразу получаешь Бадди и с первого же дня начинаешь работать. Никаких «ждём набора группы» и «первый модуль через две недели».</p></div>
+   <div class="card"><div class="ico">🎯</div><h3>Ежедневный фокус</h3><p>Совместное выполнение заданий для достижения целей и взаимный трекинг прогресса. Фокус не растворяется в быту, потому что есть человек, который про него спросит.</p></div>
+   <div class="card"><div class="ico">👥</div><h3>Сила сообщества</h3><p>Ты больше не остаёшься один на один со своими сомнениями и вопросами. Закрытый чат, где задают вопросы по делу и получают ответы, а не сочувственные смайлики.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8в. ЭФИРЫ -->
+<section id="live" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Анатомия живых эфиров</h2>
+  <p class="lead">Пара Бадди может упереться: чего-то не знает или после нескольких попыток не понимает, как дойти до результата. Для этого есть эфиры. Там разбирается жизнь, а не презентация.</p>
+  <div class="g3">
+   <div class="card"><div class="ico">🔥</div><h3>Живые горячие разборы</h3><p>Разбор переписок, свиданий и жизненных ситуаций участников прямо на созвоне. Мы научим задавать вопрос за минуту, чтобы не было воды, но была конкретика.</p></div>
+   <div class="card"><div class="ico">🧭</div><h3>Чёткий план действий</h3><p>План по шагам вместо пустой теории. Бадди поддерживает тебя, чтобы ты держал режим и доходил до результата.</p></div>
+   <div class="card"><div class="ico">🛡️</div><h3>Безопасная среда</h3><p>Мужское сообщество, где каждому интересно, как решать задачи, с которыми сталкиваются другие. Здесь можно обсудить любую проблему без страха быть высмеянным, быть собой и с каждым разом становиться лучше.</p></div>
+  </div>
+  <div class="card mt-gap"><h3>Специально разработанный и обученный бот 24/7 следит за чатом и отмечает активности участников.</p></div>
+ </div>
+</section>
+
+<!-- 8г. КОМАНДА -->
+<section id="team" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Одна голова хорошо, четыре лучше</h2>
+  <p class="lead">Мы работаем как единый слаженный механизм. Эфиры ведут основатели, и любой из нас может подхватить любой эфир.</p>
+  <div class="g2">
+   <div class="card"><div class="ico">🧬</div><h3>Единая методология</h3><p>Мы полностью разделяем методологию, взгляды и уровень экспертности. Ты не получишь противоречивых советов от разных людей.</p></div>
+   <div class="card"><div class="ico">🔄</div><h3>Взаимозаменяемость</h3><p>В любой момент мы можем подстраховать друг друга и дополнить знания друг друга. Если кто-то недоступен, другой подхватывает эфир без потери качества и глубины разборов.</p></div>
+  </div>
+  <p class="font-head font-semibold text-h3 mt-8 max-w-read">Ты всегда получаешь максимум качества и взгляд на свою ситуацию с разных сторон.</p>
+ </div>
+</section>
+
+<!-- 9. СРАВНЕНИЕ -->
+<section id="vs" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Мы и «как у всех»</h2>
+  <p class="lead">Ничего личного к другим, просто сравнение по фактам. Старая модель против нашего подхода.</p>
+  <div class="g2 mb-gap">
+   <div class="card"><h3 class="text-bad">Как устроено у других</h3><ul class="ul no space-y-2 text-muted mt-3"><li><b class="text-ink">Конвейер и кураторы.</b> Вместо основателей с тобой общаются неопытные студенты прошлых потоков.</li><li><b class="text-ink">Шаблонные ответы.</b> Отписки в чатах и никакого погружения в твою уникальную ситуацию.</li></ul></div>
+   <div class="card"><h3 class="text-good">Как работаем мы</h3><ul class="ul yes space-y-2 text-muted mt-3"><li><b class="text-ink">Прямой контакт с авторами.</b> Каждым эфиром и разбором руководят лично авторы проекта.</li><li><b class="text-ink">Взаимная ответственность.</b> Система Бадди и глубокие разборы твоей ситуации в прямом эфире, до понимания плана действий по шагам.</li></ul></div>
+  </div>
+  <div class="card !p-0 overflow-x-auto">
+   <table class="tbl">
+    <thead><tr><th>Критерий</th><th>Обычные курсы</th><th>Наш проект</th></tr></thead>
+    <tbody>
+     <tr><td>Кто ведёт эфиры?</td><td class="text-muted">Кураторы или записи</td><td class="font-semibold">Лично основатели (100 %)</td></tr>
+     <tr><td>Поддержка</td><td class="text-muted">Шаблонные ответы в чате</td><td class="font-semibold">Личный Бадди и живые эфиры</td></tr>
+     <tr><td>Разбор ситуаций</td><td class="text-muted">Поверхностный, редко</td><td class="font-semibold">Глубокий Hot-Seat на каждом эфире</td></tr>
+     <tr><td>Атмосфера</td><td class="text-muted">Шумный хаотичный чат</td><td class="font-semibold">Дисциплинированное сообщество</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<!-- 10. ДЛЯ КОГО -->
+<section id="fit" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Для кого. И для кого точно нет.</h2>
+  <p class="lead">Лучше честно отсеяться сейчас, чем через месяц разочароваться. Мы не уговариваем, мы подбираем.</p>
+  <div class="g2">
+   <div class="card border-good"><h3 class="text-good">Тебе сюда, если</h3><ul class="ul yes space-y-2 text-muted mt-3"><li>Ты уже ходил на курсы и откатывался назад.</li><li>Устал от курсов, после которых результаты не усиливаются, а гаснут.</li><li>Хочешь двигаться в своём темпе, но не в одиночку.</li><li>Готов раз в неделю тратить на себя 40 минут.</li><li>Готов услышать «ты себе врёшь» и не обидеться.</li><li>Хочешь прямой доступ к основателям, а не к кураторам.</li></ul></div>
+   <div class="card border-bad"><h3 class="text-bad">Тебе не сюда, если</h3><ul class="ul no space-y-2 text-muted mt-3"><li>Ищешь волшебную таблетку без усилий.</li><li>Собираешься «посмотреть записи когда-нибудь».</li><li>Хочешь шумный чат вместо дисциплины.</li><li>Ждёшь, что за тебя всё сделает кто-то другой.</li><li>Планируешь врать напарнику так же, как себе.</li><li>Привык «брать паузу» и больше не возвращаться.</li></ul></div>
+  </div>
+ </div>
+</section>
+
+<!-- 11. ПУТЬ -->
+<section id="path" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Твой путь в сообществе</h2>
+  <p class="lead">Без жёстких искусственных дедлайнов: двигаешься в своём темпе, но под контролем и без выгорания. Тебе не нужно видеть всю карту и весь маршрут. Нужно знать свой следующий шаг, а Бадди подстрахует.</p>
+  <ol class="rail space-y-gap">
+   <li class="card"><h3 class="acc">Неделя 1</h3><p>Вход, знакомство с Бадди, определение точек А и Б: где ты сейчас и куда идёшь. Постановка первого режима.</p></li>
+   <li class="card"><h3 class="acc">Неделя 2</h3><p>Первый живой разбор твоей ситуации на эфире. Личная консультация и разбор, после которого понятно, что делать дальше.</p></li>
+   <li class="card"><h3 class="acc">Месяц 1</h3><p>Режим становится нормой, достигаются первые цели. Ценность постоянного движения уже очевидна: ты видишь разницу не в мечтах, а в фактах.</p></li>
+   <li class="card"><h3 class="acc">Месяц 3 и дальше</h3><p>Устойчивые результаты. Ты ставишь больше целей и берёшь их увереннее. Включается эффект накопления интуитивной экспертности: решения принимаются быстрее и точнее.</p></li>
+  </ol>
+ </div>
+</section>
+
+<!-- 12. СКОЛЬКО СТОИТ ЖИЗНЬ -->
+<section id="price" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Формат участия: сколько стоит твоя жизнь?</h2>
+  <p class="lead">Если любого из нас спросить, сколько он хочет денег при условии, что сегодня последний день его жизни, что он ответит? Даже один день бесценен. Так сколько же сейчас стоят твоя жизнь, желания и цели? Как оценить конкретное достижение для конкретного человека? Давай разберём три способа.</p>
+  <div class="g3">
+   <div class="card"><div class="num-s">500 000 ₽?</div><h3 class="mt-2">За результат</h3><p>Сколько ты уже пропустил своей жизни, откладывая «на потом»? Оценивать достижение можно только по результату. Но результат нельзя купить, его можно только прожить.</p></div>
+   <div class="card"><div class="num-s">50 000 ₽?</div><h3 class="mt-2">За интенсив на месяц</h3><p>Твоя жизнь не интенсив, а спринт. Мы сознательно отказываемся брать деньги за попытку впихнуть то, что не влезет за месяц, два или три. Мы уважаем твоё время и цели. Наша цель в том, чтобы давать поддержку, заботу и своевременную информацию постоянно.</p></div>
+   <div class="card"><div class="num-s">5 000 ₽?</div><h3 class="mt-2">За консультацию</h3><p>Казалось бы, самое простое, но... Ты ходил к психологу? Знаешь мем «Грустите? Не грустите! С вас 5000 за консультацию». Непонятные сроки, попытка дать всё сразу за день, желание спросить «всё и сразу», лишь бы сэкономить. Неудобно: каждый идёт со своей скоростью, каждому нужны разные куски теории в разное время. Работает это только при личном ведении на долгой дистанции.</p></div>
+  </div>
+  <div class="card mt-gap md:p-10 border-accent">
+   <h3>Наш формат: подписка на всё и сразу</h3>
+   <div class="g2 mt-4">
+    <div><p class="font-head font-semibold text-ink mb-2">Что ты получаешь</p>
+     <ul class="ul space-y-2 text-muted"><li>Регулярные живые эфиры с разбором именно твоей ситуации.</li><li>Личный Бадди с первого дня и работа над собой с первого дня.</li><li>Закрытый чат участников.</li><li>IT-«секретные» инструменты, которые мы пока не раскрываем.</li></ul></div>
+    <div><p class="font-head font-semibold text-ink mb-2">Почему подписка</p>
+     <ul class="ul space-y-2 text-muted"><li>Доступная точка входа. Каждый может позволить себе эту роскошь.</li><li>Можно сразу оценить уровень и динамику, начать заниматься своей жизнью и попробовать формат.</li><li>Непрерывный рост вместе с сообществом.</li><li>Ты сам решаешь, когда нужна пауза на месяц-два перед продолжением.</li></ul></div>
+   </div>
+   <p class="mt-5 font-semibold">Точную цену назовём на интервью, когда поймём, что именно тебе нужно.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 13. КАК ПОПАСТЬ -->
+<section id="steps" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Как попасть: три шага</h2>
+  <p class="lead">Никаких анкет на сорок вопросов и «мы с вами свяжемся». Интервью это созвон с одним из основателей, и польза от него есть даже если ты решишь не входить.</p>
+  <div class="g3">
+   <div class="card"><div class="num">1</div><h3 class="mt-2">Напиши боту</h3><p>В результате вы договоритесь на созвон с одним из основателей проекта.</p></div>
+   <div class="card"><div class="num">2</div><h3 class="mt-2">Созвон с основателем</h3><p>Смотрим, в какой ты сейчас ситуации, подсвечиваем твои проблемы и задачи и даём краткий инструктаж. В конце обсуждаем участие: формат, условия и цену.</p></div>
+   <div class="card"><div class="num">3</div><h3 class="mt-2">Заходишь и двигаешься</h3><p>Бадди с первого дня, первый режим, точки А и Б. Работа начинается сразу, без пауз на «раскачку».</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 14. FAQ -->
+<section id="faq" class="sec">
+ <div class="wrap">
+  <h2 class="h2">Вопросы и страхи. Давай честно</h2>
+  <p class="lead">Девять сомнений, которые обычно останавливают людей на входе. Разбираем без прикрас.</p>
+  <h3 class="font-head font-semibold text-h3 acc mb-3">Про время и приоритеты</h3>
+  <div class="grid gap-3 max-w-read mb-10">
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">У меня нет на это времени</summary><p class="mt-3">Созвоны занимают всего 40 минут в неделю. Бадди ускоряет выполнение задач и убирает хаос, так что в итоге ты экономишь время, а не теряешь его.</p></details>
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">Сейчас не до Бадди, другие задачи</summary><p class="mt-3">Бадди нужен не для развлечения, а как универсальный ускоритель любых текущих задач. С Бадди и эфирами с авторами любая цель, в работе или в жизни, достигается в разы быстрее.</p></details>
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">Зачем Бадди, если есть наставники?</summary><p class="mt-3">Бадди не заменяет эксперта или наставника. Эксперт даёт знания и вектор на эфирах, а Бадди помогает держать регулярный темп и не сливаться в течение недели. Он отсеивает лишний шум, чтобы ты сосредоточился на самом важном.</p></details>
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">А кто вы вообще такие?</summary><p class="mt-3">Мы практики, которые сами прошли через кризисы и глубокие трансформации и провели через них несколько поколений учеников. Наша коллаборация даёт объёмный обзор ситуации на 360 градусов, потому что смотрим мы на неё по-разному.</p></details>
+  </div>
+  <h3 class="font-head font-semibold text-h3 acc mb-3">Про деньги и пользу</h3>
+  <div class="grid gap-3 max-w-read mb-10">
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">Это будет слишком дорого</summary><p class="mt-3">Мы даём удочку, а не продаём дорогие иллюзии. Наша основная задача это доступность и реальная польза. Пары Бадди большую часть времени работают автономно, с минимальным контролем. А ещё мы разрабатываем «секретную» IT-технологию, которая позволит экономить время и чётко следить за твоими успехами.</p></details>
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">Зачем мне это без структуры по отношениям?</summary><p class="mt-3">Детали по отношениям, коммуникации и делегированию разбираются прямо на эфирах. Бадди контролирует твою практику, а на эфирах ты получаешь чёткие алгоритмы и ответы на сложности, которые возникли в процессе. Никакой общей воды: ответы именно на твои вопросы.</p></details>
+  </div>
+  <h3 class="font-head font-semibold text-h3 acc mb-3">Про сомнения в себе</h3>
+  <div class="grid gap-3 max-w-read">
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">Пробовал и сливался</summary><p class="mt-3">Здесь нет жёстких искусственных дедлайнов. Ты двигаешься в своём темпе, но под чутким контролем и без выгорания. Именно для этого и создана система Бадди. Наша задача не провести короткий интенсив и собрать деньги, а обеспечить ежедневное достижение твоих задач.</p></details>
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">Вдруг мой Бадди неопытен?</summary><p class="mt-3">Ты получишь чёткий чек-лист и гайд проверки. Заметить самообман у соседа намного проще, чем у себя. А неопытность и страх самозванца даже могут стать стимулом следовать инструкциям как можно скрупулёзнее.</p></details>
+   <details class="card"><summary class="font-head font-semibold cursor-pointer pr-6">Бросал прошлые курсы</summary><p class="mt-3">Это не разовый курс с тонной теории, а живой процесс. Фокусируйся только на следующем шаге, Бадди подстрахует. Тебе нет смысла видеть всю карту и весь маршрут. Нужно знать и представлять свой следующий шаг.</p></details>
+  </div>
+ </div>
+</section>
+
+<!-- 15. ФИНАЛЬНЫЙ ПРИЗЫВ -->
+<section class="sec">
+ <div class="wrap">
+  <div class="card md:p-14 text-center border-accent">
+   <h2 class="font-head font-extrabold text-big mx-auto max-w-read">Хватит готовиться. Ты готов.</h2>
+   <p class="text-muted max-w-read mx-auto mt-4">Занимай место на ближайшем живом эфире и начинай рост без откатов и отмазок. Никаких «броней» и «чуть позже».</p>
+   <div class="flex flex-wrap justify-center gap-4 mt-8">
+    <a data-bot class="btn" href="#">Написать боту</a>
+    <!-- <button data-copy type="button" class="btn-ghost">Скопировать /get_interview</button> -->
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<!-- 16. ФУТЕР -->
+<footer class="border-t border-line py-10 pb-28 md:pb-10">
+ <div class="wrap flex flex-wrap items-center justify-between gap-6 text-small text-muted">
+  <div><div class="font-head font-extrabold text-h3 text-ink">Жить сейчас<span class="acc">.</span></div><div>Потом — это не дата в календаре.</div></div>
+  <nav class="flex flex-wrap gap-5">
+   <a class="hover:text-ink" data-bot href="#">Telegram-бот</a>
+   <!-- <a class="hover:text-ink" data-tg="channel" href="#">Канал</a> -->
+   <!-- <a class="hover:text-ink" data-tg="chat" href="#">Чат</a> -->
+   <!-- <a class="hover:text-ink" data-mail href="#">Почта</a> -->
+  </nav>
+ </div>
+</footer>
+
+<!-- Липкая кнопка для телефона -->
+<div class="top fixed bottom-0 inset-x-0 z-50 p-3 border-t border-line md:hidden">
+ <a data-bot class="btn w-full" href="#">Написать боту</a>
+</div>
+
+<script>
+const L={bot:'my_task_life_bot',channel:'',chat:'',mail:''};
+document.querySelectorAll('[data-bot]').forEach(a=>a.href='https://t.me/'+L.bot+'?start=get_interview');
+</script>
+</body>
+</html>

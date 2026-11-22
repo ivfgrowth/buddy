@@ -88,6 +88,146 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 }
 </style>
 -->
+<style>
+/* визуальные блоки */
+.vz{margin:2rem 0;padding:0}
+.vz figcaption{margin-top:.9rem;color:var(--c-muted);font-size:var(--fs-small);max-width:var(--read)}
+.vz-svg{display:block;width:100%;height:auto;overflow:visible}
+.vz-svg text{font-family:var(--ff-body)}
+.vz-svg .ax{stroke:var(--c-line);stroke-width:2}
+.vz-svg .base{stroke:var(--c-muted);stroke-dasharray:6 6;stroke-width:1.5;opacity:.6}
+.vz-svg .sm{fill:var(--c-muted);font-size:14px}
+.vz-svg .sm-bad{fill:var(--c-bad)}
+.vz-svg .lb{font:600 16px var(--ff-head)}
+.vz-svg .lb-tx{fill:var(--c-text)}.vz-svg .lb-acc{fill:var(--c-accent)}.vz-svg .lb-bad{fill:var(--c-bad)}.vz-svg .lb-good{fill:var(--c-good)}
+.vz-svg .d-tx{fill:var(--c-text)}.vz-svg .d-acc{fill:var(--c-accent)}.vz-svg .d-bad{fill:var(--c-bad)}.vz-svg .d-good{fill:var(--c-good)}
+.vz-svg .ln-bad{fill:none;stroke:var(--c-bad);stroke-width:4;stroke-linecap:round}
+.vz-svg .ln-good{fill:none;stroke:var(--c-good);stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.vz-svg .ln-ghost{fill:none;stroke:var(--c-bad);stroke-width:2.5;stroke-dasharray:7 7;opacity:.4}
+.vz-cyc{max-width:30rem;margin:0 auto}
+.vz-cyc .ring{fill:none;stroke:var(--c-line);stroke-width:2}
+.vz-cyc .arc{fill:none;stroke:var(--c-accent);stroke-width:3}
+.vz-cyc .ahd{fill:var(--c-accent)}
+.vz-cyc .nb{fill:var(--c-card);stroke:var(--c-line);stroke-width:1.5}
+.vz-cyc .ic{font-size:20px}
+.vz-cyc .ctr{fill:var(--c-text);font:800 26px var(--ff-head)}
+.vz-cyc .lb{font-size:15px}
+/* hero */
+.vz-herogrid{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:1000px){.vz-herogrid{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}}
+.vz-heroimg{margin:0;justify-self:center;width:100%;max-width:21rem}
+.vz-heroimg figcaption{text-align:center}
+.vz-phone{background:#0e1626;border:1px solid var(--c-line);border-radius:2rem;padding:.6rem;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 6px rgba(255,255,255,.03);transform:rotate(1.5deg)}
+.vz-ptop{display:flex;gap:.7rem;align-items:center;padding:.6rem .7rem .7rem;border-bottom:1px solid var(--c-line)}
+.vz-ptop b{display:block;font:600 .9rem var(--ff-head)}.vz-ptop small{color:var(--c-good);font-size:.75rem}
+.vz-av{width:2.3rem;height:2.3rem;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--c-violet),#4f46e5);font:700 1rem var(--ff-head);color:#fff;flex:none}
+.vz-chat{display:flex;flex-direction:column;gap:.5rem;padding:.8rem .5rem .6rem;font-size:.88rem;line-height:1.4}
+.vz-day{align-self:center;font-size:.72rem;color:var(--c-muted);background:var(--c-card);padding:.15rem .6rem;border-radius:1rem}
+.vz-m{max-width:82%;padding:.5rem .75rem;border-radius:1rem}
+.vz-m.in{align-self:flex-start;background:var(--c-card);border-bottom-left-radius:.3rem}
+.vz-m.out{align-self:flex-end;background:#3b3f9e;color:#fff;border-bottom-right-radius:.3rem}
+.vz-pic{display:flex;flex-direction:column;justify-content:flex-end;height:6.5rem;margin:-.2rem -.4rem .45rem;border-radius:.7rem;padding:.5rem .6rem;font-size:.75rem;font-weight:700;background:radial-gradient(circle at 70% 30%,rgba(245,158,11,.75),transparent 55%),linear-gradient(160deg,#1f8a70,#0f3b4f);color:#fff}
+.vz-pic span{font-size:1.4rem;margin-bottom:auto}
+.vz-sys{align-self:center;font-size:.75rem;color:var(--c-accent);border:1px solid rgba(245,158,11,.4);padding:.3rem .7rem;border-radius:1rem;margin-top:.2rem}
+/* лестница */
+.vz-stairs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;align-items:end}
+.vz-stairs .st{background:var(--c-card);border:1px solid var(--c-line);border-top:4px solid;border-radius:var(--radius) var(--radius) .4rem .4rem;padding:1rem .9rem;display:flex;flex-direction:column;gap:.35rem}
+.vz-stairs .st1{min-height:9rem;border-top-color:var(--c-bad)}.vz-stairs .st2{min-height:12.5rem;border-top-color:var(--c-accent)}.vz-stairs .st3{min-height:16rem;border-top-color:var(--c-good);background:linear-gradient(180deg,rgba(52,211,153,.12),var(--c-card))}
+.vz-stairs b{font:700 1.05rem var(--ff-head)}.vz-stairs .st1 b{color:var(--c-bad)}.vz-stairs .st2 b{color:var(--c-accent)}.vz-stairs .st3 b{color:var(--c-good)}
+.vz-stairs q{font-size:.92rem;line-height:1.35}.vz-stairs small{color:var(--c-muted);font-size:.8rem;margin-top:auto}
+@media(max-width:560px){.vz-stairs .st{padding:.75rem .6rem}.vz-stairs b{font-size:.9rem}.vz-stairs q{font-size:.8rem}}
+/* зеркало */
+.vz-mirror{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1rem;max-width:40rem}
+.vz-mirror .mp{width:6rem;height:6rem;border-radius:50%;display:grid;place-items:center;background:var(--c-card);border:2px solid var(--c-violet);font:700 1.05rem var(--ff-head)}
+.vz-mirror .mp2{border-color:var(--c-accent)}
+.vz-mirror .ma{display:grid;gap:.8rem;text-align:center;font-size:var(--fs-small);color:var(--c-muted)}
+.vz-mirror .ma div{border-bottom:2px dashed var(--c-line);padding-bottom:.35rem}
+.vz-mirror i{font-style:normal;color:var(--c-accent);font-weight:700;font-size:1.2rem}
+@media(max-width:480px){.vz-mirror .mp{width:4.5rem;height:4.5rem;font-size:.9rem}}
+/* бот */
+.vz-bot{display:flex;gap:.8rem;align-items:flex-start;background:var(--c-card);border:1px solid var(--c-line);border-radius:var(--radius);padding:1rem 1.2rem;max-width:26rem}
+.vz-av-bot{background:var(--c-bg2);border:1px solid var(--c-line);font-size:1.2rem}
+.vz-bot b{font:600 .9rem var(--ff-head)}.vz-bot ul{margin:.4rem 0 0;padding:0;list-style:none;font-size:.88rem;display:grid;gap:.2rem;color:var(--c-muted)}
+/* QR */
+.vz-qr{display:flex;gap:1.2rem;align-items:center;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
+.vz-qrbox{background:#fff;padding:.5rem;border-radius:.8rem;line-height:0}
+.vz-qr p{max-width:16rem;text-align:left;color:var(--c-muted);font-size:var(--fs-small);margin:0}
+@media(hover:none){.vz-qr{display:none}}
+.lg{display:inline-block;width:1.4rem;height:0;border-top:3px solid var(--c-good);vertical-align:middle;margin-right:.3rem}
+.lg-bad{border-top:2px dashed var(--c-bad)}
+/* плейсхолдеры фото (только в превью) */
+.vz-ph{border:2px dashed var(--c-violet);border-radius:var(--radius);background:rgba(129,140,248,.07);padding:1.2rem 1.3rem;color:var(--c-text);display:grid;gap:.4rem;justify-items:start}
+.vz-ph svg{color:var(--c-violet)}.vz-ph b{font:600 1rem var(--ff-head)}
+.vz-ph ul{margin:0;padding-left:1.1rem;color:var(--c-muted);font-size:var(--fs-small);display:grid;gap:.2rem}
+.vz-pair .vz-ph{min-height:14rem;align-content:center}
+.vz-live .vz-ph{min-height:16rem;align-content:center}
+.vz-row .vz-ph{grid-template-columns:auto 1fr;column-gap:1rem}.vz-row .vz-ph svg{grid-row:span 2}.vz-row .vz-ph ul{grid-column:2}
+.vz-team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media(max-width:700px){.vz-team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vz-tm{display:grid;justify-items:center;text-align:center;gap:.3rem}
+.vz-face{width:100%;max-width:9rem;aspect-ratio:1;border-radius:50%;border:2px dashed var(--c-violet);background:rgba(129,140,248,.07);display:grid;place-items:center;color:var(--c-violet);font-size:.85rem}
+.vz-tm b{font:600 .95rem var(--ff-head)}.vz-tm small{color:var(--c-muted);font-size:.8rem}
+.vz-revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media(max-width:800px){.vz-revs{grid-template-columns:minmax(0,1fr)}}
+.vz-rev .vz-ph{min-height:15rem;align-content:start}
+.vz-svg text{paint-order:stroke;stroke:var(--c-bg);stroke-width:5px;stroke-linejoin:round}
+.vz-cyc text{stroke:none}
+.vz-stairs q{quotes:"«" "»"}
+/* графики-карточки */
+.vz-chart{background:radial-gradient(120% 90% at 20% 0%,rgba(99,102,241,.14),transparent 60%),linear-gradient(180deg,rgba(22,32,51,.92),rgba(15,23,42,.75));border:1px solid var(--c-line);border-radius:1.4rem;padding:clamp(1rem,3vw,2rem);box-shadow:0 30px 70px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.04)}
+.vz-ch-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:.75rem 1.5rem;margin-bottom:1rem}
+.vz-eyebrow{font:600 .75rem var(--ff-head);letter-spacing:.08em;text-transform:uppercase;color:var(--c-muted)}
+.vz-ch-title{font:700 clamp(1.1rem,2.4vw,1.45rem)/1.25 var(--ff-head);margin-top:.3rem;text-wrap:balance}
+.vz-ch-leg{display:flex;gap:1rem;font-size:var(--fs-small);color:var(--c-muted);white-space:nowrap}
+.lg-fall{border-top:3px solid #f87171;background:none}
+.vz-big .gr{stroke:rgba(148,163,184,.08);stroke-width:1}
+.vz-big .ax{stroke:var(--c-line);stroke-width:1.5}
+.vz-big .tk{fill:var(--c-muted);font-size:13px}
+.vz-big .tk-l{font-size:12px;opacity:.85}
+.vz-big .tk-bad{fill:#f87171}.vz-big .tk-good{fill:#34d399;font:600 14px var(--ff-head)}
+.vz-big .base{stroke:rgba(203,213,225,.45);stroke-dasharray:5 6;stroke-width:1.5}
+.vz-big .line{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.vz-big .glow{fill:none;stroke-width:14;opacity:.45}
+.vz-big .ghost{fill:none;stroke:#f87171;stroke-width:2.5;stroke-dasharray:7 7;opacity:.35}
+.vz-big .ld{stroke:rgba(203,213,225,.35);stroke-width:1.2;stroke-dasharray:3 3}
+.vz-big .cb{fill:#121b2d;stroke-width:1.2}
+.vz-big .cb-acc{stroke:rgba(251,191,36,.55)}.vz-big .cb-warn{stroke:rgba(251,146,60,.55)}.vz-big .cb-bad{stroke:rgba(248,113,113,.6)}.vz-big .cb-good{stroke:rgba(52,211,153,.55)}
+.vz-big .ct{font:700 15px var(--ff-head);stroke:none}
+.vz-big .ct-acc{fill:#fbbf24}.vz-big .ct-warn{fill:#fb923c}.vz-big .ct-bad{fill:#f87171}.vz-big .ct-good{fill:#34d399}
+.vz-big .cs{fill:#b0bccf;font-size:12.5px;stroke:none}
+.vz-big .mk .halo{opacity:.18}.vz-big .mk .dot{fill:#0b1220;stroke-width:3}
+.vz-big .mn{font:800 12px var(--ff-head);stroke:none}
+.vz-big .mk-acc .halo{fill:#fbbf24}.vz-big .mk-acc .dot{stroke:#fbbf24}.vz-big .mk-acc .mn{fill:#fbbf24}
+.vz-big .mk-warn .halo{fill:#fb923c}.vz-big .mk-warn .dot{stroke:#fb923c}.vz-big .mk-warn .mn{fill:#fb923c}
+.vz-big .mk-bad .halo{fill:#f87171}.vz-big .mk-bad .dot{stroke:#f87171}.vz-big .mk-bad .mn{fill:#f87171}
+.vz-big .mk-good .halo{fill:#34d399}.vz-big .mk-good .dot{stroke:#34d399}.vz-big .mk-good .mn{fill:#34d399}
+.vz-big .mk{transform-box:fill-box;transform-origin:center}
+.vz-mlist{display:none;list-style:none;margin:1rem 0 0;padding:0;gap:.55rem}
+.vz-mlist li{display:flex;gap:.7rem;align-items:baseline;font-size:.92rem;color:var(--c-muted)}
+.vz-mlist span{flex:none;width:1.6rem;height:1.6rem;border-radius:50%;display:grid;place-items:center;border:2px solid;font:800 .75rem var(--ff-head);transform:translateY(.35rem)}
+.vz-mlist b{color:var(--c-text);font-family:var(--ff-head);font-weight:600}
+.vz-mlist .t-acc span{color:#fbbf24}.vz-mlist .t-warn span{color:#fb923c}.vz-mlist .t-bad span{color:#f87171}.vz-mlist .t-good span{color:#34d399}
+@media(max-width:700px){
+ .vz-big .cl{display:none}
+ .vz-big .mk{transform:scale(1.9)}
+ .vz-big .tk{font-size:22px}.vz-big .tk-l{font-size:20px}.vz-big .tk-good{font-size:24px}
+ .vz-big .line{stroke-width:8}.vz-big .glow{stroke-width:20}
+ .vz-mlist{display:grid}
+ .vz-ch-leg{white-space:normal}
+}
+/* анимация прорисовки: в покое всё видно, прячем только то, что ниже экрана */
+.vz-chart.arm .line{stroke-dasharray:1;stroke-dashoffset:1}
+.vz-chart.arm .glow,.vz-chart.arm .area,.vz-chart.arm .cl,.vz-chart.arm .mk{opacity:0}
+.vz-chart.play .line{animation:vzDraw 1.8s cubic-bezier(.4,0,.2,1) forwards}
+.vz-chart.play .glow{animation:vzFade .8s 1.2s forwards}
+.vz-chart.play .area{animation:vzFade 1s .6s forwards}
+.vz-chart.play .mk,.vz-chart.play .cl{animation:vzFade .45s forwards;animation-delay:calc(.35s + var(--d,0s))}
+@keyframes vzDraw{to{stroke-dashoffset:0}}
+@keyframes vzFade{to{opacity:1}}
+.vz-chart.play .glow{opacity:0}.vz-chart.play .area{opacity:0}.vz-chart.play .mk,.vz-chart.play .cl{opacity:0}
+@media(max-width:700px){.vz-big .tk-l{display:none}}
+
+</style>
 </head>
 <body>
 <div class="fx" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
@@ -105,23 +245,40 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <main id="top">
 <section class="sec !pt-20 md:!pt-28">
  <div class="wrap">
+<div class="vz-herogrid"><div class="vz-herotx">
   <span class="tag">Система движения вперёд для мужчин</span>
   <h1 class="font-head font-extrabold text-hero">Жить сейчас.</h1>
   <p class="font-head font-semibold text-h2 text-violet mt-3 max-w-read">Потом — это не дата в календаре.</p>
-  <p class="text-muted text-body max-w-read mt-8">Пока остальные ждут понедельника, нужного настроения, благоприятных условий и идеального плана, наши ученики уже двигаются к своим целям. Каждую неделю. Без стопов, без «как у всех», без «потом как-нибудь».</p>
+  <p class="text-muted text-body max-w-read mt-8">Личный напарник и живые разборы с основателями. Двигаешься к цели каждую неделю, без отката.</p>
   <div class="flex flex-wrap items-center gap-4 mt-10">
    <a data-bot class="btn" href="#">Написать боту</a>
    <a class="btn-ghost" href="#how">Как это устроено</a>
   </div>
   <p class="text-small text-muted mt-5 max-w-read">Первый шаг — созвон для интервью: разберём, где ты сейчас, и что с этим делать. </p>
+</div>
+<figure class="vz vz-ready vz-heroimg" id="vz-hero">
+<div class="vz-phone" role="img" aria-label="Переписка с напарником: задача, фото-отчёт, созвон">
+ <div class="vz-ptop"><span class="vz-av">А</span><div><b>Андрей · твой Бадди</b><small>в сети</small></div></div>
+ <div class="vz-chat">
+  <div class="vz-day">вторник</div>
+  <div class="vz-m in">18:00. Что по задаче на сегодня?</div>
+  <div class="vz-m out"><div class="vz-pic"><span>📸</span>пробежка · 5 км · 27:40</div>Сделал. Вот подтверждение 💪</div>
+  <div class="vz-m in">Засчитано ✅ Мой отчёт тоже в чате. Созвон в четверг?</div>
+  <div class="vz-m out">Да, в 20:00. Принесу план на неделю</div>
+  <div class="vz-sys">📅 Созвон с Бадди · чт 20:00 · 40 мин</div>
+ </div>
+</div>
+<figcaption>Неделя с напарником: задача, фото-отчёт, созвон.</figcaption></figure>
+</div>
  </div>
 </section>
 
 <section class="sec !pt-0">
  <div class="wrap">
   <div class="card md:p-10 border-accent">
-   <h2 class="h2">Сразу договоримся: тут жестко и по делу.</h2>
-   <p class="text-muted max-w-read">Без реверансов и обхода острых углов. Говорим прямо и с подколом. Не потому что мы грубые, а потому что мужчины лучше усваивают, когда им говорят как есть и с улыбкой. </p>
+   <figure class="vz vz-photo vz-row" id="vz-tough"><div class="vz-ph "><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><b>Фото основателя, крупно, взгляд в камеру</b><ul><li>Лёгкая ухмылка, без «улыбки до ушей»: тон «говорим прямо»</li><li>Подпись: имя и одна строка, кто он</li><li>Текст блока становится его цитатой</li></ul></div></figure>
+<h2 class="h2">Сразу договоримся: тут жестко и по делу.</h2>
+   <p class="text-muted max-w-read">Без реверансов и обхода острых углов. Говорим прямо и с подколом. </p>
    <p class="mt-4 font-semibold">Ждёшь мотивационных соплей? Тебе не сюда. </p>
    <p class="mt-4 font-semibold">Хочешь результат? Читай дальше.</p>
   </div>
@@ -133,12 +290,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   <h2 class="h2">Почему большинство курсов не дают эффекта</h2>
   <p class="lead">Ты же замечал: прошёл тренинг, горишь, летаешь, всё понятно. А через пару недель сидишь в тех же шлёпанцах на том же диване. Это не слабость характера. Это конструкция большинства курсов: они продают заряд, а не результат.</p>
   <div class="g3">
-   <div class="card"><div class="ico">🎯</div><h3>Накачка чужими целями</h3><p>Тебя заряжают целями тренера, его идеалами и его «успешным успехом». Чужая цель — как чужая куртка: вроде бренд крутой, но в плечах жмет, ходить невозможно, и через неделю ты забрасываешь ее на антресоль.</p></div>
-   <div class="card"><div class="ico">🔋</div><h3>Ложная мотивация</h3><p>Заряженность «здесь и сейчас» создаётся залом, музыкой и толпой. Выходишь на улицу, и она выветривается к вторнику, как запах свежего кофе в пустой кухне.</p></div>
-   <div class="card"><div class="ico">🗺️</div><h3>Нет плана на «после»</h3><p>Курс закончился, диплом получен, а что делать в понедельник в девять утра, никто не сказал. Знания есть, а дороги от них к твоей жизни нет.</p></div>
-   <div class="card"><div class="ico">🏠</div><h3>Один на один со старым миром</h3><p>Новый ты возвращается в ту же квартиру, к тем же людям и в ту же рутину. Окружение, быт и привычка тянут обратно сильнее любой силы воли.</p></div>
-   <div class="card"><div class="ico">🧠</div><h3>Мозг привык по-старому</h3><p>Нейронные дорожки старых привычек утоптаны годами. Новые ещё тропинка в траве. Мозг тихо, без шума возвращается на привычный маршрут, как кот на своё место на подоконнике.</p></div>
-   <div class="card"><div class="ico">🛋️</div><h3>«Достиг, теперь можно отдохнуть»</h3><p>Твоя победа превращается в разрешение выдохнуть. Выдох длится неделю, потом месяц, потом полгода. Отдых, из которого не возвращаются, называется иначе.</p></div>
+   <div class="card"><div class="ico">🎯</div><h3>Накачка чужими целями</h3></div>
+   <div class="card"><div class="ico">🔋</div><h3>Ложная мотивация</h3></div>
+   <div class="card"><div class="ico">🗺️</div><h3>Нет плана на «после»</h3></div>
+   <div class="card"><div class="ico">🏠</div><h3>Один на один со старым миром</h3></div>
+   <div class="card"><div class="ico">🧠</div><h3>Мозг привык по-старому</h3></div>
+   <div class="card"><div class="ico">🛋️</div><h3>«Достиг, теперь можно отдохнуть»</h3></div>
   </div>
   <p class="font-head font-semibold text-h3 mt-10 max-w-read">Суммируем: причины разные, а следствие одно. Ты становишься другим, но остаёшься с тем же, с чем пришёл, только на пару сотен тысяч беднее.</p>
  </div>
@@ -148,7 +305,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <section id="rollback" class="sec">
  <div class="wrap">
   <h2 class="h2">Привычный откат: как это выглядит изнутри</h2>
-  <p class="lead"></p>
 <!--  
   <div class="g2">
    <div class="card border-bad"><div class="ico">↩️</div><h3 class="text-bad">Привычный откат</h3>
@@ -162,12 +318,31 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   </div>
 -->
   <h3 class="font-head font-semibold text-h3 mt-12 mb-5">Откат по шагам. Узнаёшь свою историю?</h3>
-  <ol class="rail space-y-gap">
-   <li class="card"><h3 class="acc">Задор утих</h3><p>Через неделю-две после курса энергия падает до нормального уровня. Это ещё не страшно, это биология.</p></li>
-   <li class="card"><h3 class="acc">Быт затянул</h3><p>Работа, дела, усталость. Новое откладывается «на вечер», а вечером нет сил.</p></li>
-   <li class="card"><h3 class="acc">Сроки уехали</h3><p>«С понедельника». «С первого числа». «После отпуска». Дедлайн становится резиновым, а режим рассыпается.</p></li>
-   <li class="card border-bad"><h3 class="text-bad">«Теперь-то я знаю, просто сейчас не надо»</h3><p>Финал. Знание есть, действия нет. Без практики знания не усваиваются, запоминается все меньше. Внутри крепнет вывод: «со мной что-то не так».</p><p>С тобой всё так. Не так было с системой, в которой ты остался один.</p></li>
-  </ol>
+  <figure class="vz vz-ready vz-chartfig" id="vz-fall"><div class="vz-chart">
+ <div class="vz-ch-head"><div><div class="vz-eyebrow">Типичная кривая после курса</div><div class="vz-ch-title">Через три месяца ты ниже, чем был до него</div></div><div class="vz-ch-leg"><span><span class="lg lg-fall"></span>в одиночку</span></div></div>
+ <svg viewBox="0 0 900 410" class="vz-svg vz-big" role="img" aria-label="График отката: после курса энергия взлетает, затем за три месяца падает ниже исходного уровня">
+<defs>
+ <linearGradient id="fStroke" gradientUnits="userSpaceOnUse" x1="160" y1="0" x2="860" y2="0"><stop offset="0" stop-color="#fbbf24"/><stop offset=".3" stop-color="#fb923c"/><stop offset=".65" stop-color="#f87171"/><stop offset="1" stop-color="#ef4444"/></linearGradient>
+ <linearGradient id="fArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f59e0b" stop-opacity=".30"/><stop offset=".55" stop-color="#f87171" stop-opacity=".12"/><stop offset="1" stop-color="#f87171" stop-opacity="0"/></linearGradient>
+ <pattern id="fHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#f87171" fill-opacity=".10"/><line x1="0" y1="0" x2="0" y2="8" stroke="#f87171" stroke-opacity=".45" stroke-width="2"/></pattern>
+ <clipPath id="fAbove"><path d="M60,250 L160,250 C200,250 215,80 250,80 C290,80 310,135 350,150 C400,170 440,200 480,215 C530,233 570,252 610,262 C680,280 740,296 860,305 L860,0 L60,0 Z"/></clipPath>
+ <filter id="fGlow" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<line x1="60" y1="80" x2="860" y2="80" class="gr"/><line x1="60" y1="150" x2="860" y2="150" class="gr"/><line x1="60" y1="220" x2="860" y2="220" class="gr"/><line x1="60" y1="290" x2="860" y2="290" class="gr"/>
+<rect x="60" y="250" width="800" height="110" fill="url(#fHatch)" clip-path="url(#fAbove)"/>
+<path d="M60,250 L160,250 C200,250 215,80 250,80 C290,80 310,135 350,150 C400,170 440,200 480,215 C530,233 570,252 610,262 C680,280 740,296 860,305 L860,360 L60,360 Z" fill="url(#fArea)" class="area"/>
+<line x1="60" y1="250" x2="860" y2="250" class="base"/>
+<text x="66" y="272" class="tk tk-l">твой уровень до курса</text>
+<path d="M60,250 L160,250 C200,250 215,80 250,80 C290,80 310,135 350,150 C400,170 440,200 480,215 C530,233 570,252 610,262 C680,280 740,296 860,305" class="glow" stroke="url(#fStroke)" filter="url(#fGlow)"/>
+<path d="M60,250 L160,250 C200,250 215,80 250,80 C290,80 310,135 350,150 C400,170 440,200 480,215 C530,233 570,252 610,262 C680,280 740,296 860,305" class="line" stroke="url(#fStroke)" pathLength="1"/>
+<g class="cl" style="--d:0.25s"><line x1="263" y1="70" x2="272" y2="52" class="ld"/><rect x="272" y="26" width="200" height="52" rx="12" class="cb cb-acc"/><text x="286" y="48" class="ct ct-acc">Курс</text><text x="286" y="67" class="cs">«я всё понял!»</text></g><g class="cl" style="--d:0.48s"><line x1="363" y1="144" x2="378" y2="130" class="ld"/><rect x="378" y="100" width="210" height="52" rx="12" class="cb cb-acc"/><text x="392" y="122" class="ct ct-acc">Задор утих</text><text x="392" y="141" class="cs">через 1–2 недели</text></g><g class="cl" style="--d:0.79s"><line x1="493" y1="208" x2="504" y2="196" class="ld"/><rect x="504" y="160" width="250" height="52" rx="12" class="cb cb-warn"/><text x="518" y="182" class="ct ct-warn">Быт затянул</text><text x="518" y="201" class="cs">новое «на вечер», а сил нет</text></g><g class="cl" style="--d:1.07s"><line x1="610" y1="275" x2="610" y2="296" class="ld"/><rect x="470" y="296" width="270" height="52" rx="12" class="cb cb-bad"/><text x="484" y="318" class="ct ct-bad">Сроки уехали</text><text x="484" y="337" class="cs">«с понедельника», «после отпуска»</text></g><g class="cl" style="--d:1.50s"><line x1="790" y1="287" x2="790" y2="144" class="ld"/><rect x="630" y="92" width="230" height="52" rx="12" class="cb cb-bad"/><text x="644" y="114" class="ct ct-bad">«Теперь-то я знаю…»</text><text x="644" y="133" class="cs">и ты ниже, чем до курса</text></g>
+<g class="mk mk-acc" style="--d:0.21s"><circle cx="250" cy="80" r="22" class="halo"/><circle cx="250" cy="80" r="13" class="dot"/><text x="250" y="84.5" text-anchor="middle" class="mn">★</text></g><g class="mk mk-acc" style="--d:0.45s"><circle cx="350" cy="150" r="22" class="halo"/><circle cx="350" cy="150" r="13" class="dot"/><text x="350" y="154.5" text-anchor="middle" class="mn">1</text></g><g class="mk mk-warn" style="--d:0.76s"><circle cx="480" cy="215" r="22" class="halo"/><circle cx="480" cy="215" r="13" class="dot"/><text x="480" y="219.5" text-anchor="middle" class="mn">2</text></g><g class="mk mk-bad" style="--d:1.07s"><circle cx="610" cy="262" r="22" class="halo"/><circle cx="610" cy="262" r="13" class="dot"/><text x="610" y="266.5" text-anchor="middle" class="mn">3</text></g><g class="mk mk-bad" style="--d:1.50s"><circle cx="790" cy="300" r="22" class="halo"/><circle cx="790" cy="300" r="13" class="dot"/><text x="790" y="304.5" text-anchor="middle" class="mn">4</text></g>
+<line x1="60" y1="360" x2="860" y2="360" class="ax"/><line x1="110" y1="360" x2="110" y2="366" class="ax"/><text x="110" y="390" text-anchor="middle" class="tk">до курса</text><line x1="250" y1="360" x2="250" y2="366" class="ax"/><text x="250" y="390" text-anchor="middle" class="tk">курс</text><line x1="350" y1="360" x2="350" y2="366" class="ax"/><text x="350" y="390" text-anchor="middle" class="tk">2 недели</text><line x1="480" y1="360" x2="480" y2="366" class="ax"/><text x="480" y="390" text-anchor="middle" class="tk">месяц</text><line x1="610" y1="360" x2="610" y2="366" class="ax"/><text x="610" y="390" text-anchor="middle" class="tk">2 месяца</text><line x1="790" y1="360" x2="790" y2="366" class="ax"/><text x="790" y="390" text-anchor="middle" class="tk">3 месяца</text>
+<text x="22" y="200" class="tk" transform="rotate(-90 22 200)" text-anchor="middle">энергия и дисциплина</text>
+</svg>
+ <ol class="vz-mlist"><li class="t-acc"><span>★</span><div><b>Курс</b> «я всё понял!»</div></li><li class="t-acc"><span>1</span><div><b>Задор утих</b> через 1–2 недели</div></li><li class="t-warn"><span>2</span><div><b>Быт затянул</b> новое «на вечер», а сил нет</div></li><li class="t-bad"><span>3</span><div><b>Сроки уехали</b> «с понедельника», «после отпуска»</div></li><li class="t-bad"><span>4</span><div><b>«Теперь-то я знаю…»</b> и ты ниже, чем до курса</div></li></ol>
+</div>
+<figcaption>С тобой всё так. Не так было с системой, в которой ты остался один.</figcaption></figure>
   <div class="card mt-gap md:p-10 border-accent">
    <h3>Хорошая новость</h3>
    <p class="mt-1 text-ink">Откат — это не приговор, а предсказуемый сбой. А предсказуемые сбои легко лечатся. Дальше расскажем, чем именно.</p>
@@ -179,14 +354,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
  <div class="wrap">
   <h2 class="h2">Мы не первые это придумали. И в этом плюс</h2>
   <p class="lead">Вероятность выполнить задуманное резко растёт, когда есть конкретный план, срок и человек, перед которым ты отчитываешься. Разница вот в чём:</p>
-  <div class="g3">
-   <div class="card"><h3 class="text-bad">Желание</h3><p>«Хочу начать заниматься собой».<br>Звучит красиво, но живёт недолго, до пятницы.</p></div>
-   <div class="card"><h3 class="acc">Намерение</h3><p>«Начну на этой неделе».<br>Уже теплее, но «неделя» растяжима как резинка.</p></div>
-   <div class="card border-good"><h3 class="text-good">Обязательство</h3><p>«Во вторник до 18:00 делаю и присылаю подтверждение».<br>Вот это работает.</p></div>
-  </div>
+<figure class="vz vz-ready " id="vz-stairs">
+<div class="vz-stairs" role="img" aria-label="Три ступени: желание, намерение, обязательство">
+ <div class="st st1"><b>Желание</b><q>Хочу заняться собой</q><small>живёт до пятницы</small></div>
+ <div class="st st2"><b>Намерение</b><q>Начну на этой неделе</q><small>неделя тянется как резинка</small></div>
+ <div class="st st3"><b>Обязательство</b><q>Во вторник до 18:00 и фото Бадди</q><small>вот это работает</small></div>
+</div></figure>
   <div class="card mt-gap md:p-10 grid md:grid-cols-[auto,1fr] gap-6 items-center">
    <div class="num">35–85 %</div>
-   <p class="text-muted">По разным источникам и в разных сферах, такая система повышает эффективность на 35–85 %. Это результат самого подхода (напарник, срок, отчёт), а не только нашего проекта. В спорте и бизнесе это давно стандарт, а у анонимных алкоголиков на напарниках держится большая часть успеха. Новое у нас в другом: мы встроили Бадди в работу с ценностями, целями и отношениями и строим её на поощрении, а не на наказании.</p>
+   <p class="text-muted">Настолько растёт выполнение задуманного, когда есть напарник, срок и отчёт. Так работают в спорте, бизнесе и у анонимных алкоголиков. Мы встроили это в работу с целями, ценностями и отношениями.</p>
   </div>
  </div>
 </section>
@@ -197,14 +373,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   <p class="lead">Лекарство от отката называется Бадди плюс индивидуальный разбор. Тебе не нужно держать всё на силе воли.</p>
   <div class="card md:p-10 border-accent mb-gap">
    <h3>Кто такой Бадди?</h3>
-   <p class="text-ink max-w-read">Это не преподаватель и не абстрактный куратор. Это такой же участник, который идёт к своим целям параллельно с тобой. Человек, заинтересованный в твоём результате даже больше, чем ты сам, потому что его результат зависит от твоей честности так же, как твой от его.</p>
+   <p class="text-ink max-w-read">Это такой же участник, который идёт к своим целям параллельно с тобой. Вы проверяете друг друга, и это держит обоих.</p>
   </div>
-  <div class="g2">
-   <div class="card"><div class="ico">📞</div><h3>Один созвон в неделю</h3><p>Короткая сверка на 40 минут: разбор задач, корректировка планов, поддержание тонуса. Без лекций и без «давайте поделимся ощущениями».</p></div>
-   <div class="card"><div class="ico">🔍</div><h3>Проверка целей без самообмана</h3><p>Бадди помогает увидеть, где ты искренне идёшь вперёд, а где придумываешь оправдания. «Сделал на отвали» у него не проходит.</p></div>
-   <div class="card"><div class="ico">📋</div><h3>Пошаговые задачи на неделю</h3><p>Понятные действия и фокусные задачи на ближайшие семь дней. Большая цель делится на маленькие шаги и достигается последовательно, а не рывками.</p></div>
-   <div class="card"><div class="ico">📸</div><h3>Подтверждение артефактами</h3><p>Фото или видео сделанного: факт, а не рассказ о намерениях. Так ты приучаешь себя доводить дело до конца и фиксировать победы в новой жизни.</p></div>
-  </div>
+<figure class="vz vz-photo " id="vz-pair"><div class="vz-ph "><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><b>Пара Бадди на видеосозвоне</b><ul><li>Сплит-экран: два мужчины, оба смотрят в камеру, у одного блокнот</li><li>Реальные участники с согласием; на старте подойдут двое основателей</li><li>Не сток: сток считывается сразу и снижает доверие</li></ul></div></figure>
+<figure class="vz vz-ready " id="vz-cycle"><svg viewBox="0 0 520 520" class="vz-svg vz-cyc" role="img" aria-label="Цикл недели с Бадди: план, задачи, фото-отчёт, созвон, и снова план">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ahd"/></marker></defs>
+<circle cx="260" cy="260" r="180" class="ring"/><path d="M333.2,95.6 A180,180 0 0 1 424.4,186.8" class="arc" marker-end="url(#ah)"/><path d="M424.4,333.2 A180,180 0 0 1 333.2,424.4" class="arc" marker-end="url(#ah)"/><path d="M186.8,424.4 A180,180 0 0 1 95.6,333.2" class="arc" marker-end="url(#ah)"/><path d="M95.6,186.8 A180,180 0 0 1 186.8,95.6" class="arc" marker-end="url(#ah)"/><g><rect x="182" y="44" width="156" height="72" rx="14" class="nb"/><text x="260" y="72" text-anchor="middle" class="ic">📋</text><text x="260" y="92" text-anchor="middle" class="sm">Понедельник</text><text x="260" y="109" text-anchor="middle" class="lb lb-tx">План на неделю</text></g><g><rect x="362" y="224" width="156" height="72" rx="14" class="nb"/><text x="440" y="252" text-anchor="middle" class="ic">✅</text><text x="440" y="272" text-anchor="middle" class="sm">Всю неделю</text><text x="440" y="289" text-anchor="middle" class="lb lb-tx">Делаешь задачи</text></g><g><rect x="182" y="404" width="156" height="72" rx="14" class="nb"/><text x="260" y="432" text-anchor="middle" class="ic">📸</text><text x="260" y="452" text-anchor="middle" class="sm">Сразу после</text><text x="260" y="469" text-anchor="middle" class="lb lb-tx">Фото-отчёт Бадди</text></g><g><rect x="2" y="224" width="156" height="72" rx="14" class="nb"/><text x="80" y="252" text-anchor="middle" class="ic">📞</text><text x="80" y="272" text-anchor="middle" class="sm">Раз в неделю</text><text x="80" y="289" text-anchor="middle" class="lb lb-tx">Созвон 40 минут</text></g>
+<text x="260" y="254" text-anchor="middle" class="ctr">Неделя</text><text x="260" y="280" text-anchor="middle" class="ctr">с Бадди</text><text x="260" y="306" text-anchor="middle" class="sm">и снова ↻</text>
+</svg></figure>
  </div>
 </section>
 
@@ -213,10 +389,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
  <div class="wrap">
   <h2 class="h2">Три роли Бадди. И три навыка, которые прокачиваешь ты</h2>
   <p class="lead">Бадди работает в обе стороны: ты проверяешь его, он проверяет тебя.</p>
+<figure class="vz vz-ready " id="vz-mirror">
+<div class="vz-mirror" role="img" aria-label="Ты проверяешь Бадди, Бадди проверяет тебя">
+ <div class="mp"><span>Ты</span></div>
+ <div class="ma"><div>проверяю его отчёт <i>→</i></div><div><i>←</i> он проверяет мой</div></div>
+ <div class="mp mp2"><span>Бадди</span></div>
+</div></figure>
   <div class="g3">
-   <div class="card"><div class="ico">🕵️</div><h3>Детектор лжи</h3><p>Свежий взгляд со стороны мгновенно вскрывает уловки разума и попытки оправдать лень. Свою отмазку ты не заметишь, чужую увидишь с первого слова.</p><p class="mt-3 text-ink"><b>Твой навык:</b> постоянно вникая в слова Бадди и проверяя их, ты разучиваешься врать самому себе.</p></div>
-   <div class="card"><div class="ico">⚖️</div><h3>Контролёр ответственности</h3><p>Перед Бадди элементарно стыдно пролениться или сослаться на «плохое настроение». Чёткая дата созвона даёт понятные дедлайны, которые не сдвинешь по настроению.</p><p class="mt-3 text-ink"><b>Твой навык:</b> принимая выполнение у Бадди, ты каждый раз проверяешь, как работает ответственность, и заодно меняешь свою жизнь.</p></div>
-   <div class="card"><div class="ico">🤝</div><h3>Бадди по жизни</h3><p>Свидетель твоих побед и надёжная опора. С ним можно обсудить трудности и честно разделить успех, без показухи и без «а у соседа круче».</p><p class="mt-3 text-ink"><b>Твой навык:</b> радуясь достижениям Бадди, ты учишься радоваться за других. Самооценка начинается именно с этого.</p></div>
+   <div class="card"><div class="ico">🕵️</div><h3>Детектор лжи</h3><p class="mt-3 text-ink"><b>Твой навык:</b> постоянно вникая в слова Бадди и проверяя их, ты разучиваешься врать самому себе.</p></div>
+   <div class="card"><div class="ico">⚖️</div><h3>Контролёр ответственности</h3><p class="mt-3 text-ink"><b>Твой навык:</b> принимая выполнение у Бадди, ты каждый раз проверяешь, как работает ответственность, и заодно меняешь свою жизнь.</p></div>
+   <div class="card"><div class="ico">🤝</div><h3>Бадди по жизни</h3><p class="mt-3 text-ink"><b>Твой навык:</b> радуясь достижениям Бадди, ты учишься радоваться за других. Самооценка начинается именно с этого.</p></div>
   </div>
  </div>
 </section>
@@ -225,13 +407,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <section id="live" class="sec">
  <div class="wrap">
   <h2 class="h2">Анатомия живых эфиров</h2>
-  <p class="lead">Пара Бадди может упереться: чего-то не знает или после нескольких попыток не понимает, как дойти до результата. Для этого есть эфиры. Там разбирается жизнь, а не презентация.</p>
+  <p class="lead">Пара Бадди может упереться: чего-то не знает или после нескольких попыток не понимает, как дойти до результата. Тогда помогают наставники на эфире.</p>
   <div class="g3">
-   <div class="card"><div class="ico">🔥</div><h3>Живые горячие разборы</h3><p>Разбор переписок, свиданий и жизненных ситуаций участников прямо на созвоне. Мы научим задавать вопрос за минуту, чтобы не было воды, но была конкретика.</p></div>
-   <div class="card"><div class="ico">🧭</div><h3>Чёткий план действий</h3><p>План по шагам вместо пустой теории.</p></div>
-   <div class="card"><div class="ico">🛡️</div><h3>Безопасная среда</h3><p>Мужское сообщество, где каждому интересно, как решать задачи, с которыми сталкиваются другие. Здесь можно обсудить любую проблему без страха быть высмеянным.</p></div>
+   <div class="card"><div class="ico">🔥</div><h3>Живые горячие разборы</h3></div>
+   <div class="card"><div class="ico">🧭</div><h3>Чёткий план действий</h3></div>
+   <div class="card"><div class="ico">🛡️</div><h3>Безопасная среда</h3></div>
   </div>
+<figure class="vz vz-photo " id="vz-live"><div class="vz-ph "><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><b>Скриншот живого эфира</b><ul><li>Сетка созвона на 6–9 человек, в центре участник на «горячем стуле»</li><li>Сверху плашка темы: «Разбор: как вернуться в режим после отпуска»</li><li>Лица без согласия размыть</li></ul></div></figure>
   <div class="card mt-gap"><h3>Специально разработанный и обученный бот 24/7 следит за чатом и отмечает активности участников.</p></div>
+<figure class="vz vz-ready " id="vz-bot">
+<div class="vz-bot"><span class="vz-av vz-av-bot">🤖</span><div><b>Бот-трекер · итоги недели</b>
+<ul><li>Андрей ✅ 5 из 5</li><li>Илья ✅ 4 из 5</li><li>Максим ⏳ 2 из 5 · напомнил 🔔</li></ul></div></div></figure>
  </div>
 </section>
 
@@ -240,6 +426,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
  <div class="wrap">
   <h2 class="h2">Мы и «как у всех»</h2>
   <p class="lead">Ничего личного, просто факты. Все эфиры ведут четыре основателя с единой методологией: если кто-то недоступен, другой подхватит без потери качества.</p>
+<figure class="vz vz-photo " id="vz-team"><div class="vz-team"><div class="vz-tm"><div class="vz-face">фото</div><b>Основатель 1</b><small>имя · чем силён · 1 строка</small></div><div class="vz-tm"><div class="vz-face">фото</div><b>Основатель 2</b><small>имя · чем силён · 1 строка</small></div><div class="vz-tm"><div class="vz-face">фото</div><b>Основатель 3</b><small>имя · чем силён · 1 строка</small></div><div class="vz-tm"><div class="vz-face">фото</div><b>Основатель 4</b><small>имя · чем силён · 1 строка</small></div></div></figure>
   <div class="card !p-0 overflow-x-auto">
    <table class="tbl">
     <thead><tr><th>Критерий</th><th>Обычные курсы</th><th>Наш проект</th></tr></thead>
@@ -271,24 +458,45 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
  <div class="wrap">
   <h2 class="h2">Твой путь в сообществе</h2>
   <p class="lead">Без жёстких искусственных дедлайнов: двигаешься в своём темпе, но под контролем и без выгорания.</p>
-  <ol class="rail space-y-gap">
-   <li class="card"><h3 class="acc">Неделя 1</h3><p>Вход, знакомство с Бадди, определение точек А и Б: где ты сейчас и куда идёшь. Постановка первого режима.</p></li>
-   <li class="card"><h3 class="acc">Неделя 2</h3><p>Первый живой разбор твоей ситуации на эфире.</p></li>
-   <li class="card"><h3 class="acc">Месяц 1</h3><p>Режим становится нормой, достигаются первые цели. Ценность постоянного движения уже очевидна: ты видишь разницу не в мечтах, а в фактах.</p></li>
-   <li class="card"><h3 class="acc">Месяц 3 и дальше</h3><p>Устойчивые результаты. Ты ставишь больше целей и берёшь их увереннее. Включается эффект накопления интуитивной экспертности: решения принимаются быстрее и точнее.</p></li>
-  </ol>
+<figure class="vz vz-ready vz-chartfig" id="vz-rise"><div class="vz-chart">
+ <div class="vz-ch-head"><div><div class="vz-eyebrow">Тот же путь, но с напарником</div><div class="vz-ch-title">Результат растёт ступенями и не откатывается</div></div><div class="vz-ch-leg"><span><span class="lg lg-good"></span>с Бадди</span><span><span class="lg lg-bad"></span>в одиночку</span></div></div>
+ <svg viewBox="0 0 900 410" class="vz-svg vz-big" role="img" aria-label="График пути: с Бадди результат растёт ступенями, в одиночку падает после курса">
+<defs>
+ <linearGradient id="rStroke" gradientUnits="userSpaceOnUse" x1="160" y1="0" x2="860" y2="0"><stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#a7f3d0"/></linearGradient>
+ <linearGradient id="rArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34d399" stop-opacity=".28"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></linearGradient>
+ <filter id="rGlow" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<line x1="60" y1="80" x2="860" y2="80" class="gr"/><line x1="60" y1="150" x2="860" y2="150" class="gr"/><line x1="60" y1="220" x2="860" y2="220" class="gr"/><line x1="60" y1="290" x2="860" y2="290" class="gr"/>
+<path d="M60,250 L160,250 C200,250 215,80 250,80 C290,80 310,135 350,150 C400,170 440,200 480,215 C530,233 570,252 610,262 C680,280 740,296 860,305" class="ghost"/>
+<text x="856" y="326" text-anchor="end" class="tk tk-bad">в одиночку</text>
+<path d="M60,250 L230,250 Q250,250 250,232 L330,226 Q350,224 350,200 L460,190 Q480,188 480,150 L770,96 Q790,92 790,70 L860,62 L860,360 L60,360 Z" fill="url(#rArea)" class="area"/>
+<line x1="60" y1="250" x2="860" y2="250" class="base"/>
+<path d="M60,250 L230,250 Q250,250 250,232 L330,226 Q350,224 350,200 L460,190 Q480,188 480,150 L770,96 Q790,92 790,70 L860,62" class="glow" stroke="url(#rStroke)" filter="url(#rGlow)"/>
+<path d="M60,250 L230,250 Q250,250 250,232 L330,226 Q350,224 350,200 L460,190 Q480,188 480,150 L770,96 Q790,92 790,70 L860,62" class="line" stroke="url(#rStroke)" pathLength="1"/>
+<text x="860" y="44" text-anchor="end" class="tk tk-good">с Бадди</text>
+<g class="cl" style="--d:0.21s"><line x1="250" y1="245" x2="250" y2="272" class="ld"/><rect x="130" y="272" width="250" height="52" rx="12" class="cb cb-good"/><text x="144" y="294" class="ct ct-good">Неделя 1</text><text x="144" y="313" class="cs">знакомство с Бадди, точки А и Б</text></g><g class="cl" style="--d:0.48s"><line x1="363" y1="205" x2="396" y2="236" class="ld"/><rect x="396" y="222" width="220" height="52" rx="12" class="cb cb-good"/><text x="410" y="244" class="ct ct-good">Неделя 2</text><text x="410" y="263" class="cs">первый разбор на эфире</text></g><g class="cl" style="--d:0.73s"><line x1="468" y1="140" x2="456" y2="136" class="ld"/><rect x="280" y="84" width="190" height="52" rx="12" class="cb cb-good"/><text x="294" y="106" class="ct ct-good">Месяц 1</text><text x="294" y="125" class="cs">режим стал нормой</text></g><g class="cl" style="--d:1.47s"><line x1="777" y1="66" x2="758" y2="56" class="ld"/><rect x="548" y="30" width="210" height="52" rx="12" class="cb cb-good"/><text x="562" y="52" class="ct ct-good">Месяц 3+</text><text x="562" y="71" class="cs">устойчивый результат</text></g>
+<g class="mk mk-good" style="--d:0.21s"><circle cx="250" cy="232" r="22" class="halo"/><circle cx="250" cy="232" r="13" class="dot"/><text x="250" y="236.5" text-anchor="middle" class="mn">1</text></g><g class="mk mk-good" style="--d:0.45s"><circle cx="350" cy="200" r="22" class="halo"/><circle cx="350" cy="200" r="13" class="dot"/><text x="350" y="204.5" text-anchor="middle" class="mn">2</text></g><g class="mk mk-good" style="--d:0.76s"><circle cx="480" cy="150" r="22" class="halo"/><circle cx="480" cy="150" r="13" class="dot"/><text x="480" y="154.5" text-anchor="middle" class="mn">3</text></g><g class="mk mk-good" style="--d:1.50s"><circle cx="790" cy="70" r="22" class="halo"/><circle cx="790" cy="70" r="13" class="dot"/><text x="790" y="74.5" text-anchor="middle" class="mn">4</text></g>
+<line x1="60" y1="360" x2="860" y2="360" class="ax"/><line x1="110" y1="360" x2="110" y2="366" class="ax"/><text x="110" y="390" text-anchor="middle" class="tk">вход</text><line x1="250" y1="360" x2="250" y2="366" class="ax"/><text x="250" y="390" text-anchor="middle" class="tk">неделя 1</text><line x1="350" y1="360" x2="350" y2="366" class="ax"/><text x="350" y="390" text-anchor="middle" class="tk">неделя 2</text><line x1="480" y1="360" x2="480" y2="366" class="ax"/><text x="480" y="390" text-anchor="middle" class="tk">месяц</text><line x1="790" y1="360" x2="790" y2="366" class="ax"/><text x="790" y="390" text-anchor="middle" class="tk">3 месяца</text>
+</svg>
+ <ol class="vz-mlist"><li class="t-good"><span>1</span><div><b>Неделя 1</b> знакомство с Бадди, точки А и Б</div></li><li class="t-good"><span>2</span><div><b>Неделя 2</b> первый разбор на эфире</div></li><li class="t-good"><span>3</span><div><b>Месяц 1</b> режим стал нормой</div></li><li class="t-good"><span>4</span><div><b>Месяц 3+</b> устойчивый результат</div></li></ol>
+</div>
+<figcaption>Тебе не нужно видеть весь маршрут. Достаточно следующего шага, а Бадди подстрахует.</figcaption></figure>
  </div>
 </section>
+
+<section id="reviews" class="sec vz-new"><div class="wrap">
+<h2 class="h2">Что пишут участники</h2>
+<figure class="vz vz-photo " id="vz-reviews"><div class="vz-revs"><div class="vz-rev"><div class="vz-ph "><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><b>Скрин из чата №1</b><ul><li>Сообщение участника с конкретикой: цифра, дата, фото</li></ul></div></div><div class="vz-rev"><div class="vz-ph "><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><b>Скрин из чата №2</b><ul><li>«Было / стало» за месяц: режим, вес, деньги, отношения</li></ul></div></div><div class="vz-rev"><div class="vz-ph "><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><b>Скрин из чата №3</b><ul><li>Благодарность Бадди или основателю после разбора</li></ul></div></div></div><figcaption>3–6 настоящих скриншотов убеждают сильнее любого текста. Если участников пока мало, подойдут отзывы учеников основателей из прошлых проектов.</figcaption></figure></div></section>
 
 <!-- 12. СКОЛЬКО СТОИТ ЖИЗНЬ -->
 <section id="price" class="sec">
  <div class="wrap">
   <h2 class="h2">Формат участия: сколько стоит твоя жизнь?</h2>
-  <p class="lead">Если любого из нас спросить, сколько он хочет денег при условии, что сегодня последний день его жизни, что он ответит? Даже один день бесценен. Давай разберём три способа.</p>
+  <p class="lead">Три привычных способа заплатить за результат. И наш, четвёртый.</p>
   <div class="g3">
-   <div class="card"><div class="num-s">500 000 ₽?</div><h3 class="mt-2">За результат</h3><p>Сколько ты уже пропустил своей жизни, откладывая «на потом»? Но результат нельзя купить, его можно только прожить.</p></div>
-   <div class="card"><div class="num-s">50 000 ₽?</div><h3 class="mt-2">За интенсив на месяц</h3><p>Твоя жизнь не спринт, а марафон. Мы сознательно отказываемся брать деньги за попытку впихнуть то, что не влезет за месяц, два или три. Мы даём поддержку постоянно, а не рывком.</p></div>
-   <div class="card"><div class="num-s">5 000 ₽?</div><h3 class="mt-2">За консультацию</h3><p>Казалось бы, самое простое, но... Ты ходил к психологу? Знаешь мем «Грустите? Не грустите! С вас 5000 за консультацию». Разовая встреча не учитывает твой темп: каждому нужна своя теория в своё время. Работает это только при личном ведении на долгой дистанции.</p></div>
+   <div class="card"><div class="num-s">500 000 ₽?</div><h3 class="mt-2">За результат</h3></div>
+   <div class="card"><div class="num-s">50 000 ₽?</div><h3 class="mt-2">За интенсив на месяц</h3></div>
+   <div class="card"><div class="num-s">5 000 ₽?</div><h3 class="mt-2">За консультацию</h3></div>
   </div>
   <div class="card mt-gap md:p-10 border-accent">
    <h3>Наш формат: подписка на всё и сразу</h3>
@@ -307,7 +515,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <section id="steps" class="sec">
  <div class="wrap">
   <h2 class="h2">Как попасть: три шага</h2>
-  <p class="lead">Никаких анкет на сорок вопросов и «мы с вами свяжемся». Интервью это созвон с одним из основателей, и польза от него есть даже если ты решишь не входить.</p>
+  <p class="lead">Интервью это созвон с одним из основателей, и польза от него есть даже если ты решишь не входить.</p>
   <div class="g3">
    <div class="card"><div class="num">1</div><h3 class="mt-2">Напиши боту</h3><p>В результате вы договоритесь на созвон с одним из основателей проекта.</p></div>
    <div class="card"><div class="num">2</div><h3 class="mt-2">Созвон с основателем</h3><p>Смотрим, в какой ты сейчас ситуации, подсвечиваем твои проблемы и задачи и даём краткий инструктаж. В конце обсуждаем участие: формат, условия и цену.</p></div>
@@ -348,6 +556,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
    <p class="text-muted max-w-read mx-auto mt-4">Занимай место на ближайшем живом эфире и начинай рост без откатов и отмазок. Никаких «броней» и «чуть позже».</p>
    <div class="flex flex-wrap justify-center gap-4 mt-8">
     <a data-bot class="btn" href="#">Написать боту</a>
+<figure class="vz vz-ready " id="vz-qr"><div class="vz-qr"><div class="vz-qrbox"><svg width="132" height="132" role="img" aria-label="QR-код на Telegram-бота" version="1.1" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM9,1H10V2H9zM10,1H11V2H10zM12,1H13V2H12zM14,1H15V2H14zM16,1H17V2H16zM19,1H20V2H19zM24,1H25V2H24zM27,1H28V2H27zM28,1H29V2H28zM29,1H30V2H29zM30,1H31V2H30zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM1,2H2V3H1zM7,2H8V3H7zM11,2H12V3H11zM12,2H13V3H12zM13,2H14V3H13zM14,2H15V3H14zM15,2H16V3H15zM19,2H20V3H19zM20,2H21V3H20zM22,2H23V3H22zM27,2H28V3H27zM33,2H34V3H33zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM10,3H11V4H10zM11,3H12V4H11zM12,3H13V4H12zM13,3H14V4H13zM15,3H16V4H15zM16,3H17V4H16zM18,3H19V4H18zM19,3H20V4H19zM20,3H21V4H20zM21,3H22V4H21zM22,3H23V4H22zM23,3H24V4H23zM25,3H26V4H25zM27,3H28V4H27zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM33,3H34V4H33zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM9,4H10V5H9zM11,4H12V5H11zM16,4H17V5H16zM17,4H18V5H17zM18,4H19V5H18zM20,4H21V5H20zM25,4H26V5H25zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM33,4H34V5H33zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM9,5H10V6H9zM12,5H13V6H12zM17,5H18V6H17zM18,5H19V6H18zM20,5H21V6H20zM22,5H23V6H22zM23,5H24V6H23zM24,5H25V6H24zM27,5H28V6H27zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM33,5H34V6H33zM1,6H2V7H1zM7,6H8V7H7zM9,6H10V7H9zM11,6H12V7H11zM12,6H13V7H12zM13,6H14V7H13zM16,6H17V7H16zM21,6H22V7H21zM23,6H24V7H23zM27,6H28V7H27zM33,6H34V7H33zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM28,7H29V8H28zM29,7H30V8H29zM30,7H31V8H30zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM9,8H10V9H9zM11,8H12V9H11zM12,8H13V9H12zM15,8H16V9H15zM18,8H19V9H18zM20,8H21V9H20zM21,8H22V9H21zM22,8H23V9H22zM24,8H25V9H24zM25,8H26V9H25zM1,9H2V10H1zM5,9H6V10H5zM7,9H8V10H7zM8,9H9V10H8zM9,9H10V10H9zM10,9H11V10H10zM11,9H12V10H11zM16,9H17V10H16zM17,9H18V10H17zM18,9H19V10H18zM22,9H23V10H22zM23,9H24V10H23zM25,9H26V10H25zM26,9H27V10H26zM27,9H28V10H27zM28,9H29V10H28zM29,9H30V10H29zM30,9H31V10H30zM33,9H34V10H33zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM6,10H7V11H6zM8,10H9V11H8zM10,10H11V11H10zM11,10H12V11H11zM12,10H13V11H12zM16,10H17V11H16zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM23,10H24V11H23zM24,10H25V11H24zM25,10H26V11H25zM26,10H27V11H26zM30,10H31V11H30zM31,10H32V11H31zM2,11H3V12H2zM3,11H4V12H3zM5,11H6V12H5zM6,11H7V12H6zM7,11H8V12H7zM9,11H10V12H9zM10,11H11V12H10zM13,11H14V12H13zM14,11H15V12H14zM15,11H16V12H15zM16,11H17V12H16zM19,11H20V12H19zM21,11H22V12H21zM24,11H25V12H24zM25,11H26V12H25zM26,11H27V12H26zM30,11H31V12H30zM32,11H33V12H32zM5,12H6V13H5zM8,12H9V13H8zM10,12H11V13H10zM11,12H12V13H11zM14,12H15V13H14zM20,12H21V13H20zM22,12H23V13H22zM23,12H24V13H23zM24,12H25V13H24zM25,12H26V13H25zM32,12H33V13H32zM2,13H3V14H2zM4,13H5V14H4zM6,13H7V14H6zM7,13H8V14H7zM8,13H9V14H8zM9,13H10V14H9zM10,13H11V14H10zM13,13H14V14H13zM14,13H15V14H14zM16,13H17V14H16zM17,13H18V14H17zM22,13H23V14H22zM23,13H24V14H23zM25,13H26V14H25zM27,13H28V14H27zM28,13H29V14H28zM29,13H30V14H29zM30,13H31V14H30zM32,13H33V14H32zM33,13H34V14H33zM1,14H2V15H1zM2,14H3V15H2zM4,14H5V15H4zM5,14H6V15H5zM6,14H7V15H6zM13,14H14V15H13zM15,14H16V15H15zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM21,14H22V15H21zM22,14H23V15H22zM24,14H25V15H24zM27,14H28V15H27zM28,14H29V15H28zM31,14H32V15H31zM1,15H2V16H1zM2,15H3V16H2zM5,15H6V16H5zM6,15H7V16H6zM7,15H8V16H7zM8,15H9V16H8zM9,15H10V16H9zM10,15H11V16H10zM12,15H13V16H12zM15,15H16V16H15zM16,15H17V16H16zM18,15H19V16H18zM21,15H22V16H21zM22,15H23V16H22zM23,15H24V16H23zM24,15H25V16H24zM26,15H27V16H26zM27,15H28V16H27zM29,15H30V16H29zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM1,16H2V17H1zM2,16H3V17H2zM4,16H5V17H4zM5,16H6V17H5zM9,16H10V17H9zM11,16H12V17H11zM16,16H17V17H16zM17,16H18V17H17zM18,16H19V17H18zM19,16H20V17H19zM22,16H23V17H22zM24,16H25V17H24zM25,16H26V17H25zM26,16H27V17H26zM27,16H28V17H27zM29,16H30V17H29zM3,17H4V18H3zM5,17H6V18H5zM6,17H7V18H6zM7,17H8V18H7zM8,17H9V18H8zM9,17H10V18H9zM10,17H11V18H10zM14,17H15V18H14zM18,17H19V18H18zM20,17H21V18H20zM21,17H22V18H21zM23,17H24V18H23zM25,17H26V18H25zM27,17H28V18H27zM29,17H30V18H29zM30,17H31V18H30zM32,17H33V18H32zM1,18H2V19H1zM8,18H9V19H8zM14,18H15V19H14zM15,18H16V19H15zM16,18H17V19H16zM17,18H18V19H17zM19,18H20V19H19zM22,18H23V19H22zM23,18H24V19H23zM24,18H25V19H24zM30,18H31V19H30zM31,18H32V19H31zM32,18H33V19H32zM1,19H2V20H1zM2,19H3V20H2zM7,19H8V20H7zM10,19H11V20H10zM13,19H14V20H13zM14,19H15V20H14zM16,19H17V20H16zM17,19H18V20H17zM18,19H19V20H18zM21,19H22V20H21zM22,19H23V20H22zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM26,19H27V20H26zM27,19H28V20H27zM28,19H29V20H28zM30,19H31V20H30zM32,19H33V20H32zM3,20H4V21H3zM5,20H6V21H5zM9,20H10V21H9zM11,20H12V21H11zM12,20H13V21H12zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM22,20H23V21H22zM24,20H25V21H24zM25,20H26V21H25zM26,20H27V21H26zM27,20H28V21H27zM28,20H29V21H28zM1,21H2V22H1zM2,21H3V22H2zM3,21H4V22H3zM4,21H5V22H4zM5,21H6V22H5zM6,21H7V22H6zM7,21H8V22H7zM11,21H12V22H11zM13,21H14V22H13zM14,21H15V22H14zM15,21H16V22H15zM19,21H20V22H19zM20,21H21V22H20zM21,21H22V22H21zM22,21H23V22H22zM23,21H24V22H23zM24,21H25V22H24zM27,21H28V22H27zM29,21H30V22H29zM30,21H31V22H30zM33,21H34V22H33zM1,22H2V23H1zM4,22H5V23H4zM6,22H7V23H6zM9,22H10V23H9zM10,22H11V23H10zM11,22H12V23H11zM15,22H16V23H15zM17,22H18V23H17zM20,22H21V23H20zM22,22H23V23H22zM24,22H25V23H24zM26,22H27V23H26zM28,22H29V23H28zM30,22H31V23H30zM31,22H32V23H31zM32,22H33V23H32zM3,23H4V24H3zM4,23H5V24H4zM5,23H6V24H5zM6,23H7V24H6zM7,23H8V24H7zM10,23H11V24H10zM11,23H12V24H11zM12,23H13V24H12zM17,23H18V24H17zM19,23H20V24H19zM20,23H21V24H20zM24,23H25V24H24zM26,23H27V24H26zM30,23H31V24H30zM32,23H33V24H32zM3,24H4V25H3zM5,24H6V25H5zM13,24H14V25H13zM14,24H15V25H14zM18,24H19V25H18zM20,24H21V25H20zM21,24H22V25H21zM22,24H23V25H22zM25,24H26V25H25zM29,24H30V25H29zM30,24H31V25H30zM32,24H33V25H32zM1,25H2V26H1zM2,25H3V26H2zM7,25H8V26H7zM9,25H10V26H9zM10,25H11V26H10zM11,25H12V26H11zM12,25H13V26H12zM16,25H17V26H16zM18,25H19V26H18zM22,25H23V26H22zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM33,25H34V26H33zM9,26H10V27H9zM10,26H11V27H10zM13,26H14V27H13zM14,26H15V27H14zM16,26H17V27H16zM17,26H18V27H17zM18,26H19V27H18zM19,26H20V27H19zM23,26H24V27H23zM25,26H26V27H25zM29,26H30V27H29zM31,26H32V27H31zM1,27H2V28H1zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM9,27H10V28H9zM10,27H11V28H10zM11,27H12V28H11zM12,27H13V28H12zM14,27H15V28H14zM15,27H16V28H15zM16,27H17V28H16zM19,27H20V28H19zM21,27H22V28H21zM22,27H23V28H22zM25,27H26V28H25zM27,27H28V28H27zM29,27H30V28H29zM30,27H31V28H30zM32,27H33V28H32zM1,28H2V29H1zM7,28H8V29H7zM11,28H12V29H11zM14,28H15V29H14zM22,28H23V29H22zM25,28H26V29H25zM29,28H30V29H29zM32,28H33V29H32zM33,28H34V29H33zM1,29H2V30H1zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM7,29H8V30H7zM9,29H10V30H9zM10,29H11V30H10zM11,29H12V30H11zM14,29H15V30H14zM15,29H16V30H15zM16,29H17V30H16zM17,29H18V30H17zM20,29H21V30H20zM21,29H22V30H21zM22,29H23V30H22zM23,29H24V30H23zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM32,29H33V30H32zM33,29H34V30H33zM1,30H2V31H1zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM7,30H8V31H7zM11,30H12V31H11zM12,30H13V31H12zM14,30H15V31H14zM19,30H20V31H19zM20,30H21V31H20zM21,30H22V31H21zM23,30H24V31H23zM26,30H27V31H26zM27,30H28V31H27zM28,30H29V31H28zM29,30H30V31H29zM30,30H31V31H30zM1,31H2V32H1zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM11,31H12V32H11zM13,31H14V32H13zM14,31H15V32H14zM15,31H16V32H15zM16,31H17V32H16zM18,31H19V32H18zM19,31H20V32H19zM21,31H22V32H21zM22,31H23V32H22zM25,31H26V32H25zM27,31H28V32H27zM28,31H29V32H28zM29,31H30V32H29zM1,32H2V33H1zM7,32H8V33H7zM10,32H11V33H10zM12,32H13V33H12zM14,32H15V33H14zM15,32H16V33H15zM16,32H17V33H16zM17,32H18V33H17zM18,32H19V33H18zM19,32H20V33H19zM20,32H21V33H20zM21,32H22V33H21zM22,32H23V33H22zM23,32H24V33H23zM24,32H25V33H24zM25,32H26V33H25zM27,32H28V33H27zM1,33H2V34H1zM2,33H3V34H2zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM9,33H10V34H9zM11,33H12V34H11zM15,33H16V34H15zM17,33H18V34H17zM20,33H21V34H20zM21,33H22V34H21zM22,33H23V34H22zM23,33H24V34H23zM24,33H25V34H24zM25,33H26V34H25zM27,33H28V34H27zM33,33H34V34H33z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><p>Сидишь за компьютером? Наведи камеру телефона, и бот откроется в Telegram.</p></div></figure>
     <!-- <button data-copy type="button" class="btn-ghost">Скопировать /get_interview</button> -->
    </div>
   </div>
@@ -376,6 +585,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <script>
 const L={bot:'my_task_life_bot',channel:'',chat:'',mail:''};
 document.querySelectorAll('[data-bot]').forEach(a=>a.href='https://t.me/'+L.bot+'?start=get_interview');
+</script>
+<script>
+(function(){
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('play');io.unobserve(e.target);}})},{threshold:.35});
+ document.querySelectorAll('.vz-chart').forEach(function(c){var r=c.getBoundingClientRect();if(r.top>innerHeight){c.classList.add('arm');io.observe(c);}});
+})();
+
 </script>
 </body>
 </html>
